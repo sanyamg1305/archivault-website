@@ -371,9 +371,49 @@ footer .footer-logo { font-family: var(--serif); font-size: 15px; color: var(--i
 .fade-up {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
 }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.fade-in.visible { opacity: 1; }
+
+/* pain cell stagger */
+.pain-cell {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s cubic-bezier(0.22,1,0.36,1), transform 0.5s cubic-bezier(0.22,1,0.36,1), background 0.2s;
+}
+.pain-cell.visible { opacity: 1; transform: translateY(0); }
+
+/* contrast card slide */
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.c-card { animation: none; }
+.c-card.animating { animation: cardIn 0.38s cubic-bezier(0.22,1,0.36,1) both; }
+
+/* btn pulse on CTA */
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(27,79,216,0.45); }
+  70%  { box-shadow: 0 0 0 14px rgba(27,79,216,0); }
+  100% { box-shadow: 0 0 0 0 rgba(27,79,216,0); }
+}
+.btn-primary.pulse { animation: pulse-ring 2s ease-out infinite; }
+
+/* result card count */
+.r-val { transition: color 0.3s; }
+
+/* nav scroll shrink */
+nav.scrolled {
+  height: 52px;
+  box-shadow: 0 1px 16px rgba(0,0,0,0.06);
+}
+nav { transition: height 0.25s ease, box-shadow 0.25s ease; }
 
 @media (max-width: 768px) {
   nav { padding: 0 20px; }
@@ -394,7 +434,7 @@ footer .footer-logo { font-family: var(--serif); font-size: 15px; color: var(--i
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">Archi<span>vault</span></a>
-  <a href="#cta" class="nav-cta">Request a demo</a>
+  <a href="https://calendar.app.google/U6V5kvgmT6SeXW1H8" target="_blank" rel="noopener" class="nav-cta">Request a demo</a>
 </nav>
 
 <!-- HERO -->
@@ -409,7 +449,7 @@ footer .footer-logo { font-family: var(--serif); font-size: 15px; color: var(--i
       Archivault is the operating system for the architect-client relationship - so great work finally gets the experience it deserves.
     </p>
     <div class="hero-actions fade-up" style="transition-delay:.22s">
-      <a href="#cta" class="btn-primary">See how it works</a>
+      <a href="https://calendar.app.google/U6V5kvgmT6SeXW1H8" target="_blank" rel="noopener" class="btn-primary">See how it works</a>
       <a href="#pain" class="btn-ghost">What's breaking right now</a>
     </div>
     <div class="hero-stats fade-up" style="transition-delay:.3s">
@@ -547,7 +587,7 @@ footer .footer-logo { font-family: var(--serif); font-size: 15px; color: var(--i
     <div class="outcome-item">A business that grows on word of mouth, not cold outreach</div>
     <div class="outcome-item">The reputation: <em>the firm that makes clients feel taken care of</em></div>
   </div>
-  <a href="mailto:hello@archivault.in" class="btn-primary fade-up" style="transition-delay:.26s;font-size:15px;padding:16px 40px">
+  <a href="https://calendar.app.google/U6V5kvgmT6SeXW1H8" target="_blank" rel="noopener" class="btn-primary pulse fade-up" style="transition-delay:.26s;font-size:15px;padding:16px 40px">
     Request a demo →
   </a>
 </div>
@@ -583,8 +623,8 @@ function renderContrast() {
   const grid = document.getElementById('contrast-grid');
   const data = contrastMode === 'before' ? beforeData : afterData;
   const cls  = contrastMode === 'before' ? 'bad' : 'good';
-  grid.innerHTML = data.map(d => `
-    <div class="c-card ${cls}">
+  grid.innerHTML = data.map((d, i) => `
+    <div class="c-card ${cls} animating" style="animation-delay:${i * 55}ms">
       <span class="c-icon">${d.icon}</span>
       <div class="c-title">${d.title}</div>
       <div class="c-sub">${d.sub}</div>
@@ -608,6 +648,17 @@ function fmt(n) {
   return '₹' + Math.round(n * 10) / 10 + 'L';
 }
 
+function animateVal(el, newText) {
+  el.style.opacity = '0.3';
+  el.style.transform = 'translateY(-6px)';
+  el.style.transition = 'opacity 0.15s, transform 0.15s';
+  setTimeout(() => {
+    el.textContent = newText;
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0)';
+  }, 150);
+}
+
 function calcUpdate() {
   const p = +document.getElementById('s-proj').value;
   const v = +document.getElementById('s-val').value;
@@ -618,25 +669,86 @@ function calcUpdate() {
   document.getElementById('v-hrs').textContent  = h + ' hrs';
   document.getElementById('v-ref').textContent  = r + '%';
 
-  const currentRefs  = p * r / 100;
+  const currentRefs   = p * r / 100;
   const potentialRefs = p * 0.6;
-  const lostRefs = Math.max(0, potentialRefs - currentRefs);
-  const lostPipeline = lostRefs * v;
-  const hoursYear    = h * 48;
-  const unlocked     = lostRefs * v;
+  const lostRefs      = Math.max(0, potentialRefs - currentRefs);
+  const lostPipeline  = lostRefs * v;
+  const hoursYear     = h * 48;
+  const unlocked      = lostRefs * v;
 
-  document.getElementById('r-lost').textContent   = lostPipeline > 0 ? fmt(lostPipeline) : '₹0';
-  document.getElementById('r-hrs').textContent    = Math.round(hoursYear) + ' hrs';
-  document.getElementById('r-unlock').textContent = unlocked > 0 ? fmt(unlocked) : '₹0';
+  animateVal(document.getElementById('r-lost'),   lostPipeline > 0 ? fmt(lostPipeline) : '₹0');
+  animateVal(document.getElementById('r-hrs'),    Math.round(hoursYear) + ' hrs');
+  animateVal(document.getElementById('r-unlock'), unlocked > 0 ? fmt(unlocked) : '₹0');
 }
 
 calcUpdate();
+
+/* ── NAV SCROLL ── */
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+/* ── PARALLAX HERO BG WORD ── */
+const bgWord = document.querySelector('.hero-bg-word');
+window.addEventListener('scroll', () => {
+  if (bgWord) bgWord.style.transform = `translateY(calc(-50% + ${window.scrollY * 0.18}px))`;
+}, { passive: true });
 
 /* ── SCROLL ANIMATIONS ── */
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.12 });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+/* pain cells stagger individually */
+const painObserver = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), e.target.dataset.delay || 0);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.pain-cell').forEach((el, i) => {
+  el.dataset.delay = i * 100;
+  painObserver.observe(el);
+});
+
+/* hero stats count-up */
+function countUp(el, target, isRupee, suffix) {
+  const dur = 1200;
+  const start = performance.now();
+  function step(now) {
+    const p = Math.min((now - start) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    const val = Math.round(ease * target);
+    el.textContent = (isRupee ? '₹' : '') + val + (suffix || '');
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      statsObserver.unobserve(e.target);
+      const nums = e.target.querySelectorAll('.num');
+      nums.forEach(n => {
+        const txt = n.textContent;
+        if (txt.includes('₹')) countUp(n, 10, true, 'L+');
+        else if (txt.includes('3-5')) {
+          let t = 0;
+          const iv = setInterval(() => {
+            t++;
+            if (t > 10) { n.textContent = '3-5 hrs'; clearInterval(iv); }
+            else n.textContent = t % 2 === 0 ? '3-5 hrs' : Math.ceil(Math.random()*5) + ' hrs';
+          }, 80);
+        } else if (txt.includes('%')) countUp(n, 3, false, '%').then?.();
+      });
+    }
+  });
+}, { threshold: 0.4 });
+const statsRow = document.querySelector('.hero-stats');
+if (statsRow) statsObserver.observe(statsRow);
 </script>
 </body>
 </html>
