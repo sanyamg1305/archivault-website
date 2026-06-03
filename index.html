@@ -438,6 +438,17 @@ h2.cta-title em{font-style:italic;color:var(--blue);}
   100%{box-shadow:0 0 0 0 rgba(27,79,216,0);}
 }
 
+/* ── CTA CONTACT ── */
+.cta-contact{
+  margin-top:20px;font-size:13px;color:rgba(255,255,255,0.28);
+}
+.cta-contact a{
+  color:rgba(255,255,255,0.5);text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:1px;
+  transition:color .2s,border-color .2s;
+}
+.cta-contact a:hover{color:#fff;border-color:rgba(255,255,255,0.5);}
+
 /* ── FOOTER ── */
 footer{
   border-top:1px solid rgba(255,255,255,0.07);
@@ -447,6 +458,12 @@ footer{
   font-size:12.5px;color:rgba(255,255,255,0.3);
 }
 .footer-logo{font-family:var(--serif);font-size:16px;color:rgba(255,255,255,0.7);}
+.footer-contact{
+  color:rgba(255,255,255,0.4);text-decoration:none;font-size:13px;
+  border-bottom:1px solid rgba(255,255,255,0.12);padding-bottom:1px;
+  transition:color .2s,border-color .2s;
+}
+.footer-contact:hover{color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.4);}
 
 /* ── CLIP REVEAL ── */
 .clip-reveal{
@@ -657,6 +674,9 @@ footer{
     <a href="https://calendar.app.google/U6V5kvgmT6SeXW1H8" target="_blank" rel="noopener" class="btn-cta fade-up" style="transition-delay:.3s">
       Book your demo →
     </a>
+    <p class="cta-contact fade-up" style="transition-delay:.42s">
+      Or call us directly — <a href="tel:+919352915198">+91 93529 15198</a>
+    </p>
   </div>
 </div>
 
@@ -664,6 +684,7 @@ footer{
 <footer>
   <span class="footer-logo">Archivault</span>
   <span>Built for architecture &amp; interior design firms in India</span>
+  <a href="tel:+919352915198" class="footer-contact">+91 93529 15198</a>
 </footer>
 
 <script>
