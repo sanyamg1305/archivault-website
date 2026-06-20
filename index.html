@@ -131,6 +131,22 @@ nav.scrolled {
   animation: navIn 0.6s 0.1s ease forwards;
 }
 .nav-logo span { color: var(--blue); }
+.nav-links {
+  display: flex; align-items: center; gap: 8px;
+  opacity: 0;
+  transform: translateY(-8px);
+  animation: navIn 0.6s 0.2s ease forwards;
+}
+.nav-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink2);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+}
+.nav-link:hover { color: var(--blue); background: var(--blue-l); }
 .nav-cta {
   font-family: var(--sans);
   font-size: 13px;
@@ -142,9 +158,6 @@ nav.scrolled {
   cursor: pointer;
   text-decoration: none;
   transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
-  opacity: 0;
-  transform: translateY(-8px);
-  animation: navIn 0.6s 0.2s ease forwards;
 }
 .nav-cta:hover { background: var(--blue-d); box-shadow: 0 4px 16px rgba(27,79,216,0.3); }
 .nav-cta:active { transform: scale(0.97); }
@@ -641,6 +654,7 @@ body:hover #cursor-dot { opacity: 1; }
   footer { flex-direction: column; gap: 12px; text-align: center; }
   .hero-bg-word { display: none; }
   #cursor-dot { display: none; }
+  .nav-link { display: none; }
 }
 </style>
 </head>
@@ -655,7 +669,11 @@ body:hover #cursor-dot { opacity: 1; }
 <!-- NAV -->
 <nav id="main-nav" aria-label="Main navigation">
   <a href="#" class="nav-logo" aria-label="Archivault home">Archi<span>vault</span></a>
-  <a href="#cta" class="nav-cta">Request a demo</a>
+  <div class="nav-links">
+    <a href="#pain" class="nav-link">How it works</a>
+    <a href="/blog/" class="nav-link">Blog</a>
+    <a href="#cta" class="nav-cta">Request a demo</a>
+  </div>
 </nav>
 
 <main>
