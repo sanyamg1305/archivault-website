@@ -426,24 +426,37 @@ h2.section-title em { font-style: italic; }
   border: 1px solid var(--dim);
   border-radius: 8px; padding: 4px;
   margin-bottom: 48px;
+  position: relative;
 }
 .tog-btn {
   font-family: var(--sans);
   font-size: 13px; font-weight: 500;
   padding: 9px 24px; border-radius: 6px;
   border: none; background: none; cursor: pointer;
-  color: var(--muted); transition: all 0.22s;
+  color: var(--muted); transition: color 0.22s;
+  position: relative; z-index: 1;
 }
-.tog-btn.active {
-  background: var(--ink); color: #fff;
+.tog-btn.active { color: #fff; }
+.tog-pill {
+  position: absolute;
+  top: 4px; bottom: 4px;
+  border-radius: 6px;
+  background: var(--ink);
   box-shadow: 0 2px 8px rgba(11,18,32,0.2);
+  transition: left 0.28s cubic-bezier(0.34,1.56,0.64,1), width 0.28s cubic-bezier(0.34,1.56,0.64,1);
+  z-index: 0;
 }
 
 .contrast-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 14px;
+  position: relative;
 }
+/* grid fade when switching */
+.contrast-grid.switching { pointer-events: none; }
+.contrast-grid.switching .c-card { animation: cardOut 0.18s ease forwards; }
+
 .c-card {
   padding: 24px 26px;
   border-radius: 10px;
@@ -451,23 +464,42 @@ h2.section-title em { font-style: italic; }
   background: var(--white);
   transition: border-color 0.2s, transform 0.22s, box-shadow 0.22s;
   opacity: 0;
-  transform: translateY(18px);
-  animation: cardIn 0.4s ease forwards;
+  transform: translateY(18px) scale(0.97);
+  animation: cardIn 0.38s cubic-bezier(0.22,1,0.36,1) forwards;
 }
 .c-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px) scale(1.01);
   border-color: #b0bcd4;
   box-shadow: 0 8px 28px rgba(11,18,32,0.08);
 }
 .c-card.bad  { border-left: 3px solid var(--red);   border-radius: 0 10px 10px 0; }
 .c-card.good { border-left: 3px solid var(--green); border-radius: 0 10px 10px 0; }
+/* good cards: subtle green shimmer on entrance */
+.c-card.good { background: linear-gradient(135deg, #fff 80%, var(--green-l) 100%); }
 .c-card .c-title { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 5px; }
 .c-card .c-sub   { font-size: 13px; color: var(--muted); line-height: 1.5; }
-.c-card .c-icon  { font-size: 20px; margin-bottom: 12px; display: block; transition: transform 0.25s; }
-.c-card:hover .c-icon { transform: scale(1.18) rotate(-3deg); }
+.c-card .c-icon  { font-size: 20px; margin-bottom: 12px; display: block; transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1); }
+.c-card:hover .c-icon { transform: scale(1.25) rotate(-4deg); }
+/* checkmark icon for good cards */
+.c-card.good .c-icon {
+  width: 28px; height: 28px;
+  background: var(--green); color: #fff;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700;
+  animation: checkPop 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards;
+  opacity: 0;
+}
 
 @keyframes cardIn {
-  to { opacity: 1; transform: translateY(0); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes cardOut {
+  to { opacity: 0; transform: translateY(-10px) scale(0.96); }
+}
+@keyframes checkPop {
+  0%   { opacity: 0; transform: scale(0); }
+  60%  { transform: scale(1.2); }
+  100% { opacity: 1; transform: scale(1); }
 }
 
 /* ── CALCULATOR ───────────────────────────── */
@@ -755,7 +787,8 @@ body:hover #cursor-dot { opacity: 1; }
     The firms winning right now<br><em>look different.</em>
   </h2>
   <br>
-  <div class="toggle-wrap fade-up" style="transition-delay:.14s">
+  <div class="toggle-wrap fade-up" style="transition-delay:.14s" id="toggle-wrap">
+    <div class="tog-pill" id="tog-pill"></div>
     <button class="tog-btn active" id="tog-before" onclick="toggleContrast('before')">Without Archivault</button>
     <button class="tog-btn" id="tog-after"  onclick="toggleContrast('after')">With Archivault</button>
   </div>
@@ -885,27 +918,56 @@ const afterData = [
 
 let contrastMode = 'before';
 
-function renderContrast() {
+function movePill(mode) {
+  const wrap = document.getElementById('toggle-wrap');
+  const btn  = document.getElementById(mode === 'before' ? 'tog-before' : 'tog-after');
+  const pill = document.getElementById('tog-pill');
+  const wRect = wrap.getBoundingClientRect();
+  const bRect = btn.getBoundingClientRect();
+  pill.style.left  = (bRect.left - wRect.left - 4) + 'px';
+  pill.style.width = bRect.width + 'px';
+}
+
+function renderContrast(animate) {
   const grid = document.getElementById('contrast-grid');
   const data = contrastMode === 'before' ? beforeData : afterData;
   const cls  = contrastMode === 'before' ? 'bad' : 'good';
-  grid.innerHTML = data.map((d, i) => `
-    <div class="c-card ${cls}" style="animation-delay:${i * 0.06}s">
-      <span class="c-icon">${d.icon}</span>
-      <div class="c-title">${d.title}</div>
-      <div class="c-sub">${d.sub}</div>
-    </div>
-  `).join('');
+
+  if (animate) {
+    grid.classList.add('switching');
+    setTimeout(() => {
+      grid.classList.remove('switching');
+      grid.innerHTML = data.map((d, i) => `
+        <div class="c-card ${cls}" style="animation-delay:${i * 0.055}s">
+          <span class="c-icon">${d.icon}</span>
+          <div class="c-title">${d.title}</div>
+          <div class="c-sub">${d.sub}</div>
+        </div>
+      `).join('');
+    }, 180);
+  } else {
+    grid.innerHTML = data.map((d, i) => `
+      <div class="c-card ${cls}" style="animation-delay:${i * 0.055}s">
+        <span class="c-icon">${d.icon}</span>
+        <div class="c-title">${d.title}</div>
+        <div class="c-sub">${d.sub}</div>
+      </div>
+    `).join('');
+  }
 }
 
 function toggleContrast(mode) {
+  if (mode === contrastMode) return;
   contrastMode = mode;
   document.getElementById('tog-before').className = 'tog-btn' + (mode === 'before' ? ' active' : '');
   document.getElementById('tog-after').className  = 'tog-btn' + (mode === 'after'  ? ' active' : '');
-  renderContrast();
+  movePill(mode);
+  renderContrast(true);
 }
 
-renderContrast();
+renderContrast(false);
+/* init pill position after layout */
+requestAnimationFrame(() => movePill('before'));
 
 /* ── CALCULATOR ── */
 function fmt(n) {
