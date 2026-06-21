@@ -572,6 +572,78 @@ input[type=range]:active::-webkit-slider-thumb {
 .r-green { color: #4ADE80; }
 .r-blue  { color: #93B4F7; }
 
+/* ── TESTIMONIALS ────────────────────────── */
+#testimonials { padding: 100px 48px; max-width: 1100px; margin: 0 auto; }
+.testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
+.testi-card {
+  background: var(--white); border: 1px solid var(--dim);
+  border-radius: 14px; padding: 32px;
+  display: flex; flex-direction: column; gap: 24px;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.testi-card:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(11,18,32,0.07); border-color: #b0bcd4; }
+.testi-quote { font-size: 15px; color: var(--ink2); line-height: 1.7; font-style: italic; flex: 1; }
+.testi-quote::before { content: '\201C'; font-family: var(--serif); font-size: 32px; color: var(--blue); line-height: 0; vertical-align: -12px; margin-right: 4px; }
+.testi-author { display: flex; align-items: center; gap: 12px; }
+.testi-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--blue); color: #fff;
+  font-size: 13px; font-weight: 500;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.testi-name { font-size: 14px; font-weight: 500; color: var(--ink); }
+.testi-role { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* ── PRICING ──────────────────────────────── */
+#pricing { padding: 100px 48px; max-width: 1100px; margin: 0 auto; }
+.pricing-sub { font-size: 17px; color: var(--muted); font-weight: 300; margin-top: 12px; margin-bottom: 56px; }
+.pricing-grid { display: grid; grid-template-columns: 380px 1fr; gap: 48px; align-items: start; }
+.pricing-card {
+  background: var(--white); border: 2px solid var(--blue);
+  border-radius: 16px; padding: 40px;
+  box-shadow: 0 8px 40px rgba(27,79,216,0.1);
+}
+.pricing-badge {
+  display: inline-block; font-size: 11px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--blue-l); color: var(--blue);
+  padding: 4px 12px; border-radius: 20px; margin-bottom: 20px;
+}
+.pricing-name { font-family: var(--serif); font-size: 24px; color: var(--ink); margin-bottom: 16px; }
+.pricing-price { font-family: var(--serif); font-size: 36px; color: var(--ink); line-height: 1; }
+.pricing-freq { font-size: 14px; color: var(--muted); margin-top: 4px; margin-bottom: 28px; }
+.pricing-features { list-style: none; padding: 0; margin-bottom: 32px; border-top: 1px solid var(--dim); padding-top: 24px; }
+.pricing-features li { font-size: 14px; color: var(--ink2); padding: 8px 0; border-bottom: 1px solid var(--dim); display: flex; align-items: center; gap: 10px; }
+.pricing-features li::before { content: '✓'; color: var(--green); font-weight: 600; font-size: 13px; flex-shrink: 0; }
+.pricing-info { display: flex; flex-direction: column; gap: 28px; padding-top: 8px; }
+.pricing-point { display: flex; gap: 16px; align-items: flex-start; }
+.pp-icon { width: 28px; height: 28px; background: var(--green-l); color: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+.pp-title { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+.pp-sub { font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+/* ── FAQ ──────────────────────────────────── */
+#faq { padding: 100px 48px; max-width: 780px; margin: 0 auto; }
+.faq-list { margin-top: 48px; border-top: 1px solid var(--dim); }
+.faq-item { border-bottom: 1px solid var(--dim); }
+.faq-q {
+  width: 100%; text-align: left; background: none; border: none;
+  padding: 22px 0; font-family: var(--sans); font-size: 16px;
+  font-weight: 500; color: var(--ink); cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  transition: color 0.15s;
+}
+.faq-q:hover { color: var(--blue); }
+.faq-arrow { font-size: 18px; color: var(--muted); transition: transform 0.25s ease, color 0.15s; flex-shrink: 0; }
+.faq-q.open .faq-arrow { transform: rotate(180deg); color: var(--blue); }
+.faq-a {
+  font-size: 15px; color: var(--ink2); line-height: 1.75;
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.25s ease;
+  padding: 0;
+}
+.faq-a.open { max-height: 300px; padding-bottom: 22px; }
+
 /* ── CLOSE / CTA ─────────────────────────── */
 #cta {
   text-align: center;
@@ -683,6 +755,9 @@ body:hover #cursor-dot { opacity: 1; }
   .calc-layout { grid-template-columns: 1fr; gap: 40px; }
   #contrast { padding: 80px 20px; }
   #cta { padding: 80px 20px; }
+  #testimonials, #pricing, #faq { padding: 80px 20px; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
   footer { flex-direction: column; gap: 12px; text-align: center; }
   .hero-bg-word { display: none; }
   #cursor-dot { display: none; }
@@ -846,6 +921,157 @@ body:hover #cursor-dot { opacity: 1; }
   </div>
 </div>
 
+<!-- TESTIMONIALS -->
+<div id="testimonials">
+  <p class="section-kicker fade-up">From the firms using Archivault</p>
+  <h2 class="section-title fade-up" style="transition-delay:.08s">What architects are saying.</h2>
+  <div class="testi-grid fade-up" style="transition-delay:.16s">
+    <div class="testi-card">
+      <div class="testi-quote">"Before Archivault, every client was calling me twice a week asking for updates. Now they check in on their own and actually feel calm. My stress levels dropped before theirs did."</div>
+      <div class="testi-author">
+        <div class="testi-avatar">RK</div>
+        <div>
+          <div class="testi-name">Rahul K.</div>
+          <div class="testi-role">Principal Architect, Pune</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-quote">"We had a billing dispute on almost every third project. Approvals were lost in WhatsApp, costs were a surprise at handover. Since we moved to Archivault, we haven't had a single dispute in 8 months."</div>
+      <div class="testi-author">
+        <div class="testi-avatar">SP</div>
+        <div>
+          <div class="testi-name">Sneha P.</div>
+          <div class="testi-role">Interior Design Studio, Bangalore</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-quote">"Two of my last four clients referred someone before the project even ended. That never happened before. The experience is just different now - clients feel like they're part of it."</div>
+      <div class="testi-author">
+        <div class="testi-avatar">AM</div>
+        <div>
+          <div class="testi-name">Arjun M.</div>
+          <div class="testi-role">Architecture Firm, Mumbai</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div id="pricing">
+  <p class="section-kicker fade-up">Pricing</p>
+  <h2 class="section-title fade-up" style="transition-delay:.08s">Simple, per-firm pricing.</h2>
+  <p class="pricing-sub fade-up" style="transition-delay:.12s">One flat subscription for your entire firm. No per-seat fees, no per-project charges.</p>
+  <div class="pricing-grid fade-up" style="transition-delay:.18s">
+    <div class="pricing-card">
+      <div class="pricing-badge">Early Access</div>
+      <div class="pricing-name">Archivault</div>
+      <div class="pricing-price">Contact us</div>
+      <div class="pricing-freq">for early access pricing</div>
+      <ul class="pricing-features">
+        <li>Unlimited active projects</li>
+        <li>Unlimited client portals</li>
+        <li>Site photo updates</li>
+        <li>Approval documentation</li>
+        <li>Real-time budget tracking</li>
+        <li>Document storage</li>
+        <li>1-2 day onboarding with support</li>
+        <li>Dedicated account contact</li>
+      </ul>
+      <a href="https://calendar.app.google/YYfKLqwQS4JDQmht6" class="btn-primary" target="_blank" rel="noopener" style="width:100%;text-align:center;display:block">Book a demo →</a>
+    </div>
+    <div class="pricing-info">
+      <div class="pricing-point">
+        <div class="pp-icon">✓</div>
+        <div>
+          <div class="pp-title">No per-seat fees</div>
+          <div class="pp-sub">Add your whole team. Pricing is per firm, not per person.</div>
+        </div>
+      </div>
+      <div class="pricing-point">
+        <div class="pp-icon">✓</div>
+        <div>
+          <div class="pp-title">No per-client charges</div>
+          <div class="pp-sub">Run 5 projects or 50. Every client gets a portal at no extra cost.</div>
+        </div>
+      </div>
+      <div class="pricing-point">
+        <div class="pp-icon">✓</div>
+        <div>
+          <div class="pp-title">1-2 day setup</div>
+          <div class="pp-sub">We set everything up with you. Your first project is live in a day or two.</div>
+        </div>
+      </div>
+      <div class="pricing-point">
+        <div class="pp-icon">✓</div>
+        <div>
+          <div class="pp-title">Early access discount</div>
+          <div class="pp-sub">Firms that join now lock in founder pricing permanently.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div id="faq">
+  <p class="section-kicker fade-up">Common questions</p>
+  <h2 class="section-title fade-up" style="transition-delay:.08s">Everything you want to know.</h2>
+  <div class="faq-list fade-up" style="transition-delay:.14s">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Do my clients need to download an app?
+        <span class="faq-arrow">↓</span>
+      </button>
+      <div class="faq-a">No. Clients access their portal through a link - nothing to download, nothing to install. It works in any browser on any device. Most clients check it on their phone without any friction.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        What if my clients are not very tech-savvy?
+        <span class="faq-arrow">↓</span>
+      </button>
+      <div class="faq-a">Archivault is designed for clients, not for architects. The client view shows only what they need to see: progress photos, their approvals, and their budget. No dashboards, no complexity. If they can use WhatsApp, they can use Archivault.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        How long does it take to get set up?
+        <span class="faq-arrow">↓</span>
+      </button>
+      <div class="faq-a">Most firms are fully set up and have their first project live within 1-2 days. We handle the onboarding with you directly - you don't figure it out alone. By the end of day two, your next client briefing can be done through Archivault.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Is our project data secure?
+        <span class="faq-arrow">↓</span>
+      </button>
+      <div class="faq-a">Yes. All data is encrypted in transit and at rest, hosted on cloud infrastructure (AWS/GCP) with industry-standard security practices. Your project data, client information, and documents are private to your firm and your clients only.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Can I still use WhatsApp alongside Archivault?
+        <span class="faq-arrow">↓</span>
+      </button>
+      <div class="faq-a">Absolutely. WhatsApp is great for quick, informal messages. Archivault handles the structured side - approvals, budget updates, progress reports, documents. Most firms use both: WhatsApp for casual conversation, Archivault for everything that needs to be on record.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Does it work for interior design firms too, or just architects?
+        <span class="faq-arrow">↓</span>
+      </button>
+      <div class="faq-a">Archivault is built for both. The approval and budget workflows are actually even more critical in interior design, where there are dozens of material selections and micro-decisions per project. Many of our early users are interior design studios.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        What happens to my data if I stop using Archivault?
+        <span class="faq-arrow">↓</span>
+      </button>
+      <div class="faq-a">Your data is yours. You can export all project records, approvals, documents, and communications before cancelling. We don't hold your data hostage and we don't make it hard to leave - though most firms don't want to.</div>
+    </div>
+  </div>
+</div>
+
 <!-- CTA -->
 <div id="cta">
   <p class="section-kicker dark fade-up">This is what you're building towards</p>
@@ -872,6 +1098,10 @@ body:hover #cursor-dot { opacity: 1; }
 <footer>
   <span class="footer-logo">Archivault</span>
   <span>Built for architecture &amp; interior design firms in India</span>
+  <span style="display:flex;gap:20px">
+    <a href="/blog/" style="color:var(--muted);text-decoration:none;font-size:12.5px">Blog</a>
+    <a href="/contact" style="color:var(--muted);text-decoration:none;font-size:12.5px">Contact</a>
+  </span>
 </footer>
 
 <script>
@@ -1069,6 +1299,21 @@ document.querySelectorAll('.fade-up').forEach(el => {
   const rect = el.getBoundingClientRect();
   if (rect.top < window.innerHeight) el.classList.add('visible');
 });
+
+/* ── FAQ TOGGLE ── */
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  /* close all */
+  document.querySelectorAll('.faq-q.open').forEach(q => {
+    q.classList.remove('open');
+    q.nextElementSibling.classList.remove('open');
+  });
+  if (!isOpen) {
+    btn.classList.add('open');
+    answer.classList.add('open');
+  }
+}
 
 /* GA: track CTA and demo clicks */
 document.querySelectorAll('a[href*="mailto"], .nav-cta, .btn-primary').forEach(el => {
