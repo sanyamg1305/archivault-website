@@ -169,6 +169,282 @@ nav.scrolled {
 /* ── SECTIONS ────────────────────────────── */
 section { padding: 100px 48px; max-width: 1100px; margin: 0 auto; }
 
+/* ── PRODUCT DEMO ────────────────────────── */
+#product-demo {
+  padding: 80px 48px 100px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+#product-demo .pd-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+#product-demo .pd-kicker {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 14px;
+}
+#product-demo .pd-title {
+  font-family: var(--serif);
+  font-size: 42px;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+#product-demo .pd-title em { font-style: italic; color: var(--muted); }
+#product-demo .pd-sub {
+  font-size: 16px;
+  color: var(--muted);
+  font-weight: 300;
+  max-width: 460px;
+  margin: 0 auto;
+}
+.pd-wrapper {
+  position: relative;
+  padding: 40px 180px;
+}
+.pd-frame {
+  border-radius: 14px;
+  border: 1px solid var(--dim);
+  background: var(--white);
+  overflow: hidden;
+  box-shadow: 0 4px 40px rgba(11,18,32,0.08);
+}
+.pd-topbar {
+  background: #F4F4F2;
+  border-bottom: 1px solid var(--dim);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pd-dot { width: 10px; height: 10px; border-radius: 50%; }
+.pd-dot-r { background: #F09595; }
+.pd-dot-y { background: #FAC775; }
+.pd-dot-g { background: #C0DD97; }
+.pd-tabs {
+  display: flex;
+  gap: 0;
+  margin-left: 16px;
+}
+.pd-tab {
+  font-size: 11px;
+  color: var(--muted);
+  padding: 3px 12px;
+  border-radius: 4px;
+  font-weight: 400;
+}
+.pd-tab.active {
+  background: var(--white);
+  color: var(--ink);
+  font-weight: 500;
+}
+.pd-body {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  min-height: 300px;
+}
+.pd-sidebar {
+  border-right: 1px solid var(--dim);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: #FAFAF8;
+}
+.pd-sidebar-label {
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 8px 8px 4px;
+  font-weight: 500;
+}
+.pd-sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  cursor: default;
+}
+.pd-sidebar-item.active {
+  background: var(--blue-l);
+  color: var(--blue);
+  font-weight: 500;
+}
+.pd-sidebar-icon { font-size: 15px; line-height: 1; }
+.pd-main { padding: 18px 20px; }
+.pd-main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.pd-main-title { font-size: 13px; font-weight: 500; color: var(--ink); }
+.pd-status-pill {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: var(--green-l);
+  color: var(--green);
+  font-weight: 500;
+}
+.pd-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.pd-card {
+  background: var(--bg);
+  border: 1px solid var(--dim);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.pd-card-label { font-size: 10px; color: var(--muted); margin-bottom: 4px; font-weight: 400; }
+.pd-card-val { font-size: 20px; font-weight: 500; color: var(--ink); }
+.pd-card-val.c-blue { color: var(--blue); }
+.pd-card-val.c-green { color: var(--green); }
+.pd-card-val.c-amber { color: var(--amber); }
+.pd-bar-bg { height: 4px; background: var(--dim); border-radius: 2px; margin-top: 6px; }
+.pd-bar-fill { height: 4px; background: var(--blue); border-radius: 2px; }
+.pd-timeline { display: flex; flex-direction: column; gap: 8px; }
+.pd-tl-item { display: flex; align-items: center; gap: 10px; font-size: 11.5px; }
+.pd-tl-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.pd-tl-done { background: var(--green); }
+.pd-tl-active { background: var(--blue); }
+.pd-tl-todo { background: var(--dim); }
+.pd-tl-label { flex: 1; color: var(--ink2); }
+.pd-tl-date { color: var(--muted); font-size: 10.5px; }
+.pd-badge {
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+.pd-badge.done { background: var(--green-l); color: var(--green); }
+.pd-badge.active { background: var(--blue-l); color: var(--blue); }
+.pd-badge.todo { background: var(--bg); color: var(--muted); border: 1px solid var(--dim); }
+
+/* Callout chips */
+.pd-callout {
+  position: absolute;
+  background: var(--white);
+  border: 1px solid var(--dim);
+  border-radius: 12px;
+  padding: 12px 14px;
+  box-shadow: 0 2px 16px rgba(11,18,32,0.1);
+  width: 164px;
+  z-index: 10;
+}
+.pd-callout-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+.pd-callout-icon.blue { background: var(--blue-l); color: var(--blue); }
+.pd-callout-icon.green { background: var(--green-l); color: var(--green); }
+.pd-callout-icon.amber { background: var(--amber-l); color: var(--amber); }
+.pd-callout-icon.red { background: var(--red-l); color: var(--red); }
+.pd-callout-title { font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+.pd-callout-desc { font-size: 11px; color: var(--muted); line-height: 1.45; }
+
+.pd-connector {
+  position: absolute;
+  pointer-events: none;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  overflow: visible;
+  z-index: 5;
+}
+
+/* Approval rows */
+.pd-approval-list { display: flex; flex-direction: column; gap: 1px; }
+.pd-approval-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 7px;
+  transition: background 0.15s;
+}
+.pd-approval-row.pending { background: var(--amber-l); }
+.pd-approval-row.resolved { background: var(--bg); }
+.pd-approval-left { flex: 1; min-width: 0; }
+.pd-approval-title { font-size: 12px; font-weight: 500; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pd-approval-meta { font-size: 10.5px; color: var(--muted); margin-top: 2px; }
+.pd-approval-actions { display: flex; gap: 6px; flex-shrink: 0; }
+.pd-btn-approve {
+  font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 5px;
+  background: var(--green); color: #fff; border: none; cursor: pointer;
+  transition: opacity 0.15s;
+}
+.pd-btn-approve:hover { opacity: 0.85; }
+.pd-btn-reject {
+  font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 5px;
+  background: var(--white); color: var(--muted); border: 1px solid var(--dim); cursor: pointer;
+  transition: background 0.15s;
+}
+.pd-btn-reject:hover { background: var(--red-l); color: var(--red); border-color: var(--red); }
+.pd-approval-row.approved-anim { background: var(--green-l); transition: background 0.3s; }
+.pd-approval-row.rejected-anim { background: var(--red-l); transition: background 0.3s; }
+
+/* Document rows */
+.pd-doc-list { display: flex; flex-direction: column; gap: 2px; }
+.pd-doc-section-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); padding: 4px 0 6px; }
+.pd-doc-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 7px;
+  background: var(--bg);
+  border: 1px solid var(--dim);
+}
+.pd-doc-icon {
+  width: 34px; height: 34px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.03em; flex-shrink: 0;
+}
+.pd-doc-icon.pdf { background: var(--red-l); color: var(--red); }
+.pd-doc-icon.dwg { background: var(--blue-l); color: var(--blue); }
+.pd-doc-icon.img { background: var(--amber-l); color: var(--amber); }
+.pd-doc-info { flex: 1; min-width: 0; }
+.pd-doc-name { font-size: 12px; font-weight: 500; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pd-doc-meta { font-size: 10.5px; color: var(--muted); margin-top: 1px; }
+.pd-doc-btn {
+  font-size: 11px; padding: 4px 10px; border-radius: 5px; flex-shrink: 0;
+  background: var(--white); color: var(--blue); border: 1px solid var(--blue-l);
+  cursor: pointer; font-weight: 500; transition: background 0.15s;
+}
+.pd-doc-btn:hover { background: var(--blue-l); }
+
+/* Tab panel transitions */
+.pd-tab { cursor: pointer; }
+.pd-tab-panel { animation: pdFadeIn 0.2s ease; }
+@keyframes pdFadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 768px) {
+  #product-demo { padding: 60px 20px 70px; }
+  #product-demo .pd-title { font-size: 28px; }
+  .pd-wrapper { padding: 20px 0; }
+  .pd-callout { display: none; }
+  .pd-cards { grid-template-columns: repeat(2, 1fr); }
+  .pd-body { grid-template-columns: 1fr; }
+  .pd-sidebar { display: none; }
+}
+
 /* ── HERO ─────────────────────────────────── */
 #hero {
   min-height: 100vh;
@@ -904,6 +1180,216 @@ body:hover #cursor-dot { opacity: 1; }
   </div>
 </div>
 
+<!-- PRODUCT DEMO -->
+<div id="product-demo">
+  <div class="pd-header fade-up">
+    <p class="pd-kicker">The platform</p>
+    <h2 class="pd-title">Everything your client needs<br>to feel <em>in control.</em></h2>
+    <p class="pd-sub">One portal. Real-time updates. No more anxious calls.</p>
+  </div>
+
+  <div class="pd-wrapper fade-up" style="transition-delay:.1s">
+    <div class="pd-frame">
+      <div class="pd-topbar">
+        <div class="pd-dot pd-dot-r"></div>
+        <div class="pd-dot pd-dot-y"></div>
+        <div class="pd-dot pd-dot-g"></div>
+        <div class="pd-tabs">
+          <div class="pd-tab active" data-tab="overview" onclick="pdSwitchTab(this,'overview')">Client portal</div>
+          <div class="pd-tab" data-tab="approvals" onclick="pdSwitchTab(this,'approvals')">Approvals</div>
+          <div class="pd-tab" data-tab="documents" onclick="pdSwitchTab(this,'documents')">Documents</div>
+        </div>
+      </div>
+      <div class="pd-body">
+        <div class="pd-sidebar">
+          <div class="pd-sidebar-label">Projects</div>
+          <div class="pd-sidebar-item active"><span class="pd-sidebar-icon">⌂</span> Sharma Residence</div>
+          <div class="pd-sidebar-item"><span class="pd-sidebar-icon">▣</span> Mehta Office</div>
+          <div class="pd-sidebar-item"><span class="pd-sidebar-icon">◈</span> Verma Villa</div>
+          <div class="pd-sidebar-label" style="margin-top:8px">Views</div>
+          <div class="pd-sidebar-item" onclick="pdSwitchTab(document.querySelector('[data-tab=approvals]'),'approvals')" style="cursor:pointer"><span class="pd-sidebar-icon">✓</span> Approvals</div>
+          <div class="pd-sidebar-item" onclick="pdSwitchTab(document.querySelector('[data-tab=documents]'),'documents')" style="cursor:pointer"><span class="pd-sidebar-icon">☰</span> Documents</div>
+          <div class="pd-sidebar-item"><span class="pd-sidebar-icon">◫</span> Budget</div>
+        </div>
+        <div class="pd-main">
+
+          <!-- TAB: Overview -->
+          <div id="pd-tab-overview" class="pd-tab-panel">
+            <div class="pd-main-header">
+              <div class="pd-main-title">Sharma Residence — Project overview</div>
+              <div class="pd-status-pill">On track</div>
+            </div>
+            <div class="pd-cards">
+              <div class="pd-card">
+                <div class="pd-card-label">Budget used</div>
+                <div class="pd-card-val c-blue">68%</div>
+                <div class="pd-bar-bg"><div class="pd-bar-fill" style="width:68%"></div></div>
+              </div>
+              <div class="pd-card">
+                <div class="pd-card-label">Approvals pending</div>
+                <div class="pd-card-val c-amber">3</div>
+              </div>
+              <div class="pd-card">
+                <div class="pd-card-label">Days to handover</div>
+                <div class="pd-card-val c-green">42</div>
+              </div>
+            </div>
+            <div class="pd-timeline">
+              <div class="pd-tl-item"><div class="pd-tl-dot pd-tl-done"></div><span class="pd-tl-label">Foundation &amp; structure</span><span class="pd-tl-date">Apr 12</span><span class="pd-badge done">Done</span></div>
+              <div class="pd-tl-item"><div class="pd-tl-dot pd-tl-done"></div><span class="pd-tl-label">Electrical &amp; plumbing</span><span class="pd-tl-date">May 28</span><span class="pd-badge done">Done</span></div>
+              <div class="pd-tl-item"><div class="pd-tl-dot pd-tl-active"></div><span class="pd-tl-label">Interior finishes</span><span class="pd-tl-date">Jul 15</span><span class="pd-badge active">In progress</span></div>
+              <div class="pd-tl-item"><div class="pd-tl-dot pd-tl-todo"></div><span class="pd-tl-label">Final fittings &amp; handover</span><span class="pd-tl-date">Aug 10</span><span class="pd-badge todo">Upcoming</span></div>
+            </div>
+          </div>
+
+          <!-- TAB: Approvals -->
+          <div id="pd-tab-approvals" class="pd-tab-panel" style="display:none">
+            <div class="pd-main-header">
+              <div class="pd-main-title">Approvals — Sharma Residence</div>
+              <div class="pd-status-pill" style="background:var(--amber-l);color:var(--amber)">3 pending</div>
+            </div>
+            <div class="pd-approval-list">
+              <div class="pd-approval-row pending">
+                <div class="pd-approval-left">
+                  <div class="pd-approval-title">Flooring material — Italian marble vs Vitrified</div>
+                  <div class="pd-approval-meta">Requested Jun 24 · Architect: Priya Sharma</div>
+                </div>
+                <div class="pd-approval-actions">
+                  <button class="pd-btn-approve" onclick="pdApprove(this)">Approve</button>
+                  <button class="pd-btn-reject" onclick="pdReject(this)">Reject</button>
+                </div>
+              </div>
+              <div class="pd-approval-row pending">
+                <div class="pd-approval-left">
+                  <div class="pd-approval-title">False ceiling design — Living room</div>
+                  <div class="pd-approval-meta">Requested Jun 26 · Architect: Priya Sharma</div>
+                </div>
+                <div class="pd-approval-actions">
+                  <button class="pd-btn-approve" onclick="pdApprove(this)">Approve</button>
+                  <button class="pd-btn-reject" onclick="pdReject(this)">Reject</button>
+                </div>
+              </div>
+              <div class="pd-approval-row pending">
+                <div class="pd-approval-left">
+                  <div class="pd-approval-title">Kitchen cabinet finish — Matte lacquer</div>
+                  <div class="pd-approval-meta">Requested Jun 27 · Architect: Priya Sharma</div>
+                </div>
+                <div class="pd-approval-actions">
+                  <button class="pd-btn-approve" onclick="pdApprove(this)">Approve</button>
+                  <button class="pd-btn-reject" onclick="pdReject(this)">Reject</button>
+                </div>
+              </div>
+              <div class="pd-approval-row resolved">
+                <div class="pd-approval-left">
+                  <div class="pd-approval-title">Window frame colour — Anthracite grey</div>
+                  <div class="pd-approval-meta">Approved Jun 18 · Timestamped &amp; saved</div>
+                </div>
+                <span class="pd-badge done" style="flex-shrink:0">Approved</span>
+              </div>
+              <div class="pd-approval-row resolved">
+                <div class="pd-approval-left">
+                  <div class="pd-approval-title">Electrical point layout — Master bedroom</div>
+                  <div class="pd-approval-meta">Approved Jun 12 · Timestamped &amp; saved</div>
+                </div>
+                <span class="pd-badge done" style="flex-shrink:0">Approved</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: Documents -->
+          <div id="pd-tab-documents" class="pd-tab-panel" style="display:none">
+            <div class="pd-main-header">
+              <div class="pd-main-title">Documents — Sharma Residence</div>
+              <div class="pd-status-pill" style="background:var(--blue-l);color:var(--blue)">12 files</div>
+            </div>
+            <div class="pd-doc-list">
+              <div class="pd-doc-section-label">Contracts &amp; agreements</div>
+              <div class="pd-doc-row">
+                <div class="pd-doc-icon pdf">PDF</div>
+                <div class="pd-doc-info">
+                  <div class="pd-doc-name">Design agreement — signed</div>
+                  <div class="pd-doc-meta">Uploaded Apr 2 · 1.2 MB</div>
+                </div>
+                <button class="pd-doc-btn">↓ Download</button>
+              </div>
+              <div class="pd-doc-row">
+                <div class="pd-doc-icon pdf">PDF</div>
+                <div class="pd-doc-info">
+                  <div class="pd-doc-name">Scope of work — v2</div>
+                  <div class="pd-doc-meta">Uploaded Apr 15 · 840 KB</div>
+                </div>
+                <button class="pd-doc-btn">↓ Download</button>
+              </div>
+              <div class="pd-doc-section-label" style="margin-top:10px">Drawings</div>
+              <div class="pd-doc-row">
+                <div class="pd-doc-icon dwg">DWG</div>
+                <div class="pd-doc-info">
+                  <div class="pd-doc-name">Floor plan — final approved</div>
+                  <div class="pd-doc-meta">Uploaded May 3 · 4.7 MB</div>
+                </div>
+                <button class="pd-doc-btn">↓ Download</button>
+              </div>
+              <div class="pd-doc-row">
+                <div class="pd-doc-icon img">IMG</div>
+                <div class="pd-doc-info">
+                  <div class="pd-doc-name">3D renders — living room</div>
+                  <div class="pd-doc-meta">Uploaded May 20 · 8.1 MB</div>
+                </div>
+                <button class="pd-doc-btn">↓ Download</button>
+              </div>
+              <div class="pd-doc-row">
+                <div class="pd-doc-icon pdf">PDF</div>
+                <div class="pd-doc-info">
+                  <div class="pd-doc-name">Material schedule — Jun update</div>
+                  <div class="pd-doc-meta">Uploaded Jun 22 · 560 KB</div>
+                </div>
+                <button class="pd-doc-btn">↓ Download</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Connector lines SVG -->
+    <svg class="pd-connector" aria-hidden="true">
+      <line x1="180" y1="120" x2="218" y2="165" stroke="#D8DEE9" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="calc(100% - 180px)" y1="110" x2="calc(100% - 218px)" y2="155" stroke="#D8DEE9" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="172" y1="calc(100% - 80px)" x2="218" y2="calc(100% - 110px)" stroke="#D8DEE9" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="calc(100% - 172px)" y1="calc(100% - 80px)" x2="calc(100% - 218px)" y2="calc(100% - 110px)" stroke="#D8DEE9" stroke-width="1" stroke-dasharray="4,3"/>
+    </svg>
+
+    <!-- Callout: top left -->
+    <div class="pd-callout" style="top:30px;left:0">
+      <div class="pd-callout-icon blue">👁</div>
+      <div class="pd-callout-title">Live project view</div>
+      <div class="pd-callout-desc">Clients see real-time status — no calls needed.</div>
+    </div>
+
+    <!-- Callout: top right -->
+    <div class="pd-callout" style="top:20px;right:0">
+      <div class="pd-callout-icon green">✓</div>
+      <div class="pd-callout-title">One-click approvals</div>
+      <div class="pd-callout-desc">Review and sign off on decisions from any device.</div>
+    </div>
+
+    <!-- Callout: bottom left -->
+    <div class="pd-callout" style="bottom:40px;left:0">
+      <div class="pd-callout-icon amber">₹</div>
+      <div class="pd-callout-title">Budget transparency</div>
+      <div class="pd-callout-desc">Every rupee tracked. No more surprise conversations.</div>
+    </div>
+
+    <!-- Callout: bottom right -->
+    <div class="pd-callout" style="bottom:30px;right:0">
+      <div class="pd-callout-icon red">🔔</div>
+      <div class="pd-callout-title">Smart notifications</div>
+      <div class="pd-callout-desc">Clients are updated before they think to ask.</div>
+    </div>
+  </div>
+</div>
+
 <!-- CONTRAST TOGGLE -->
 <div id="contrast">
   <p class="section-kicker dark fade-up">The contrast</p>
@@ -1381,6 +1867,45 @@ document.querySelectorAll('input[type=range]').forEach(el => {
     gtag('event', 'calculator_used', { event_category: 'engagement', event_label: el.id });
   });
 });
+
+function pdSwitchTab(el, tabId) {
+  document.querySelectorAll('.pd-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('[data-tab]').forEach(t => {
+    if (t.dataset.tab === tabId) t.classList.add('active');
+  });
+  document.querySelectorAll('.pd-tab-panel').forEach(p => p.style.display = 'none');
+  document.getElementById('pd-tab-' + tabId).style.display = 'block';
+
+  const sidebarMap = { approvals: 1, documents: 2 };
+  document.querySelectorAll('.pd-sidebar-item').forEach((item, i) => item.classList.remove('active'));
+  if (tabId === 'approvals') document.querySelectorAll('.pd-sidebar-item')[4].classList.add('active');
+  else if (tabId === 'documents') document.querySelectorAll('.pd-sidebar-item')[5].classList.add('active');
+  else document.querySelectorAll('.pd-sidebar-item')[0].classList.add('active');
+}
+
+function pdApprove(btn) {
+  const row = btn.closest('.pd-approval-row');
+  row.classList.remove('pending');
+  row.classList.add('approved-anim', 'resolved');
+  row.querySelector('.pd-approval-actions').innerHTML = '<span class="pd-badge done">Approved</span>';
+  updatePendingCount();
+}
+
+function pdReject(btn) {
+  const row = btn.closest('.pd-approval-row');
+  row.classList.remove('pending');
+  row.classList.add('rejected-anim', 'resolved');
+  row.querySelector('.pd-approval-actions').innerHTML = '<span class="pd-badge" style="background:var(--red-l);color:var(--red)">Rejected</span>';
+  updatePendingCount();
+}
+
+function updatePendingCount() {
+  const count = document.querySelectorAll('.pd-approval-row.pending').length;
+  const pill = document.querySelector('#pd-tab-approvals .pd-status-pill');
+  if (pill) pill.textContent = count + ' pending';
+  const overviewCard = document.querySelector('#pd-tab-overview .pd-card-val.c-amber');
+  if (overviewCard) overviewCard.textContent = count;
+}
 </script>
 </body>
 </html>
