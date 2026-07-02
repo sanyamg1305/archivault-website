@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Setup | Archivault</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0B1220;--ink2:#1E2D45;--muted:#6B7A96;--dim:#D8DEE9;--bg:#FAFAF8;
+  --white:#FFFFFF;--blue:#1B4FD8;--blue-d:#1340B0;--blue-l:#EBF0FC;--blue-ll:#F0F4FE;
+  --green:#16A34A;--green-l:#F0FDF4;--amber:#D97706;--amber-l:#FFFBEB;
+  --serif:'DM Serif Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;
+  --shadow-sm:0 1px 4px rgba(11,18,32,0.06);
+  --shadow:0 4px 20px rgba(11,18,32,0.08);
+  --shadow-lg:0 12px 48px rgba(11,18,32,0.12);
+  --radius:12px;--radius-sm:8px;--radius-xs:6px
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden;min-height:100vh}
+
+/* ── SHELL ─────────────────────────────────────────── */
+.shell{display:flex;flex-direction:column;min-height:100vh}
+
+/* ── TOP BAR ─────────────────────────────────────────*/
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;height:60px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;
+  background:rgba(250,250,248,0.92);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--dim)
+}
+.topbar-logo{font-family:var(--serif);font-size:19px;letter-spacing:0.04em;color:var(--ink);text-decoration:none}
+.topbar-logo span{color:var(--blue)}
+.topbar-right{display:flex;align-items:center;gap:16px}
+.topbar-step-label{font-size:12px;font-weight:500;color:var(--muted)}
+.topbar-step-label strong{color:var(--ink2)}
+.topbar-exit{font-size:12px;color:var(--muted);text-decoration:none;transition:color 0.15s}
+.topbar-exit:hover{color:var(--ink)}
+
+/* ── PROGRESS BAR ─────────────────────────────────── */
+.progress-bar-wrap{
+  position:fixed;top:60px;left:0;right:0;z-index:99;
+  height:3px;background:var(--dim)
+}
+.progress-bar-fill{
+  height:100%;background:var(--blue);
+  transition:width 0.5s cubic-bezier(0.4,0,0.2,1)
+}
+
+/* ── MAIN ─────────────────────────────────────────── */
+main{flex:1;padding-top:80px;padding-bottom:80px}
+
+/* ── STEP CONTAINER ─────────────────────────────────*/
+.step{
+  display:none;
+  max-width:720px;margin:0 auto;padding:40px 24px
+}
+.step.active{display:block;animation:stepIn 0.35s ease}
+@keyframes stepIn{
+  from{opacity:0;transform:translateY(16px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ── STEP HEADER ─────────────────────────────────── */
+.step-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:12px
+}
+.step-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--blue)}
+.step-title{font-family:var(--serif);font-size:clamp(28px,4vw,40px);line-height:1.15;margin-bottom:10px;color:var(--ink)}
+.step-sub{font-size:15px;color:var(--muted);font-weight:300;line-height:1.65;max-width:580px;margin-bottom:40px}
+
+/* ── FORM GROUPS ─────────────────────────────────── */
+.form-group{margin-bottom:32px}
+.form-label{
+  display:block;font-size:13px;font-weight:500;color:var(--ink2);
+  margin-bottom:8px;line-height:1.4
+}
+.form-label-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:22px;height:22px;border-radius:50%;background:var(--blue-l);
+  color:var(--blue);font-size:11px;font-weight:500;margin-right:8px;flex-shrink:0
+}
+.form-hint{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5}
+
+/* Text input */
+.form-input{
+  width:100%;padding:12px 16px;font-family:var(--sans);font-size:14px;
+  color:var(--ink);background:var(--white);
+  border:1.5px solid var(--dim);border-radius:var(--radius-sm);
+  outline:none;transition:border-color 0.15s,box-shadow 0.15s
+}
+.form-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,79,216,0.1)}
+.form-input::placeholder{color:#b0bcd4}
+
+/* Radio / Checkbox grid */
+.option-grid{display:flex;flex-direction:column;gap:8px}
+.option-grid.cols-2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.option-grid.cols-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.option-item{position:relative}
+.option-item input{position:absolute;opacity:0;width:0;height:0}
+.option-label{
+  display:flex;align-items:center;gap:10px;
+  padding:11px 14px;border:1.5px solid var(--dim);border-radius:var(--radius-sm);
+  cursor:pointer;font-size:13.5px;color:var(--ink2);
+  background:var(--white);transition:border-color 0.15s,background 0.15s,box-shadow 0.15s;
+  line-height:1.4;user-select:none
+}
+.option-label:hover{border-color:#b0bcd4;background:var(--blue-ll)}
+.option-indicator{
+  width:18px;height:18px;border-radius:50%;border:1.5px solid var(--dim);
+  background:var(--white);flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  transition:border-color 0.15s,background 0.15s
+}
+.option-item input[type="checkbox"] ~ .option-label .option-indicator{border-radius:4px}
+.option-item input:checked ~ .option-label{
+  border-color:var(--blue);background:var(--blue-ll);color:var(--ink)
+}
+.option-item input:checked ~ .option-label .option-indicator{
+  border-color:var(--blue);background:var(--blue)
+}
+.option-item input[type="radio"]:checked ~ .option-label .option-indicator::after{
+  content:'';width:6px;height:6px;border-radius:50%;background:#fff
+}
+.option-item input[type="checkbox"]:checked ~ .option-label .option-indicator::after{
+  content:'✓';font-size:10px;color:#fff;line-height:1;font-weight:700
+}
+.option-text{flex:1}
+.option-sub{font-size:11.5px;color:var(--muted);font-weight:300;margin-top:1px}
+
+/* Other text inline */
+.other-wrap{display:none;margin-top:8px}
+.other-wrap.visible{display:block}
+
+/* Divider within form */
+.form-divider{height:1px;background:var(--dim);margin:32px 0}
+
+/* ── FEATURE WALKTHROUGH (step 4) ────────────────── */
+.fw-intro{
+  background:var(--ink);border-radius:var(--radius);padding:28px 32px;
+  margin-bottom:28px;display:flex;align-items:flex-start;gap:20px
+}
+.fw-intro-icon{font-size:28px;flex-shrink:0;margin-top:2px}
+.fw-intro-text h3{font-family:var(--serif);font-size:21px;color:#fff;margin-bottom:6px}
+.fw-intro-text p{font-size:14px;color:rgba(255,255,255,0.6);font-weight:300;line-height:1.6}
+
+.fw-section{margin-bottom:24px}
+.fw-section-head{
+  display:flex;align-items:center;gap:10px;margin-bottom:12px;
+  padding-bottom:10px;border-bottom:1px solid var(--dim)
+}
+.fw-section-icon{
+  width:32px;height:32px;border-radius:8px;background:var(--blue-l);
+  display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0
+}
+.fw-section-title{font-size:14px;font-weight:500;color:var(--ink)}
+.fw-features{display:flex;flex-direction:column;gap:6px}
+.fw-feature{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:13px;color:var(--muted);line-height:1.5;padding:2px 0
+}
+.fw-feature-dot{
+  width:18px;height:18px;border-radius:50%;background:var(--green-l);
+  color:var(--green);font-size:10px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px
+}
+.fw-feature strong{color:var(--ink2);font-weight:500}
+
+/* ── CUSTOMISATION SECTION ────────────────────────── */
+.addon-section{margin-bottom:28px}
+.addon-section-head{
+  font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:12px;display:flex;align-items:center;gap:6px
+}
+.addon-section-head::after{content:'';flex:1;height:1px;background:var(--blue-l)}
+
+/* ── PRIORITY RANKER ─────────────────────────────── */
+.rank-list{display:flex;flex-direction:column;gap:8px}
+.rank-item{
+  display:flex;align-items:center;gap:12px;
+  padding:12px 16px;border:1.5px solid var(--dim);border-radius:var(--radius-sm);
+  background:var(--white);cursor:grab;user-select:none;
+  transition:border-color 0.15s,box-shadow 0.15s
+}
+.rank-item:active{cursor:grabbing}
+.rank-item.dragging{opacity:0.5;border-color:var(--blue);box-shadow:var(--shadow)}
+.rank-item.drag-over{border-color:var(--blue);background:var(--blue-ll)}
+.rank-num{
+  width:26px;height:26px;border-radius:50%;background:var(--blue-l);
+  color:var(--blue);font-size:12px;font-weight:500;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0
+}
+.rank-text{flex:1;font-size:13.5px;color:var(--ink2)}
+.rank-handle{color:#c8d0dc;font-size:16px;cursor:grab}
+
+/* ── BUTTONS ─────────────────────────────────────── */
+.btn-row{display:flex;align-items:center;gap:12px;margin-top:40px}
+.btn-primary{
+  padding:13px 32px;background:var(--blue);color:#fff;
+  border:none;border-radius:var(--radius-sm);font-family:var(--sans);
+  font-size:14px;font-weight:500;cursor:pointer;
+  transition:background 0.15s,transform 0.1s;text-decoration:none;display:inline-block
+}
+.btn-primary:hover{background:var(--blue-d);transform:translateY(-1px)}
+.btn-primary:active{transform:translateY(0)}
+.btn-secondary{
+  padding:12px 24px;background:transparent;color:var(--muted);
+  border:1.5px solid var(--dim);border-radius:var(--radius-sm);font-family:var(--sans);
+  font-size:14px;font-weight:500;cursor:pointer;
+  transition:border-color 0.15s,color 0.15s
+}
+.btn-secondary:hover{border-color:#b0bcd4;color:var(--ink2)}
+.btn-primary.large{padding:16px 40px;font-size:15px}
+
+/* ── CONFIRMATION ─────────────────────────────────── */
+.confirm-wrap{max-width:640px;margin:0 auto;padding:60px 24px;text-align:center}
+.confirm-icon{
+  width:72px;height:72px;border-radius:50%;background:var(--green-l);
+  display:flex;align-items:center;justify-content:center;font-size:32px;
+  margin:0 auto 28px
+}
+.confirm-title{font-family:var(--serif);font-size:36px;margin-bottom:12px;color:var(--ink)}
+.confirm-sub{font-size:16px;color:var(--muted);font-weight:300;line-height:1.65;margin-bottom:48px}
+.confirm-steps{
+  display:flex;flex-direction:column;gap:0;
+  text-align:left;margin-bottom:48px;
+  border:1.5px solid var(--dim);border-radius:var(--radius);overflow:hidden
+}
+.confirm-step{
+  display:flex;align-items:flex-start;gap:16px;
+  padding:20px 24px;border-bottom:1px solid var(--dim);background:var(--white)
+}
+.confirm-step:last-child{border-bottom:none}
+.confirm-step-num{
+  width:32px;height:32px;border-radius:50%;background:var(--blue-l);
+  color:var(--blue);font-family:var(--serif);font-size:16px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px
+}
+.confirm-step-body h4{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:3px}
+.confirm-step-body p{font-size:13px;color:var(--muted);line-height:1.5;font-weight:300}
+.confirm-actions{display:flex;flex-direction:column;gap:10px;align-items:center}
+.confirm-action-link{
+  display:flex;align-items:center;gap:10px;width:100%;max-width:320px;
+  padding:13px 20px;border:1.5px solid var(--dim);border-radius:var(--radius-sm);
+  text-decoration:none;color:var(--ink2);font-size:14px;font-weight:500;
+  background:var(--white);transition:border-color 0.15s,background 0.15s
+}
+.confirm-action-link:hover{border-color:var(--blue);background:var(--blue-ll)}
+.confirm-action-icon{font-size:16px}
+
+/* ── RESPONSIVE ───────────────────────────────────── */
+@media(max-width:640px){
+  .topbar{padding:0 20px}
+  .step{padding:28px 16px}
+  .option-grid.cols-2,.option-grid.cols-3{grid-template-columns:1fr}
+  .fw-intro{flex-direction:column;gap:12px;padding:20px}
+  .btn-row{flex-direction:column;align-items:stretch}
+  .btn-primary,.btn-secondary{text-align:center}
+  .confirm-step{flex-direction:column;gap:10px}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <a href="/" class="topbar-logo">Archi<span>vault</span></a>
+  <div class="topbar-right">
+    <span class="topbar-step-label" id="topbar-label">Step <strong>1</strong> of 6</span>
+    <a href="/" class="topbar-exit">Exit setup</a>
+  </div>
+</header>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar-wrap">
+  <div class="progress-bar-fill" id="progress-fill" style="width:16.67%"></div>
+</div>
+
+<!-- MAIN -->
+<main>
+
+<!-- ═══════════════════════════════════════════════════
+     STEP 1 — Studio Profile
+════════════════════════════════════════════════════ -->
+<div class="step active" id="step-1">
+  <div class="step-tag"><span class="step-tag-dot"></span>Studio Profile</div>
+  <h1 class="step-title">Let's set up your<br>Archivault studio account.</h1>
+  <p class="step-sub">This takes about 3 minutes. We'll understand how your studio works, what you need on day one, and what you'd like customised. No technical knowledge needed.</p>
+
+  <!-- Q1 -->
+  <div class="form-group">
+    <label class="form-label" for="studio-name">
+      <span class="form-label-num">1</span>What is the name of your architecture or design studio?
+    </label>
+    <input class="form-input" type="text" id="studio-name" placeholder="e.g. Sharma & Associates" autocomplete="organization">
+  </div>
+
+  <!-- Q2 -->
+  <div class="form-group">
+    <div class="form-label"><span class="form-label-num">2</span>What best describes your role?</div>
+    <div class="option-grid cols-2">
+      <div class="option-item">
+        <input type="radio" name="role" id="r-principal" value="Principal Architect">
+        <label class="option-label" for="r-principal">
+          <span class="option-indicator"></span>
+          <span class="option-text">Principal Architect</span>
+        </label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="role" id="r-id" value="Interior Designer">
+        <label class="option-label" for="r-id">
+          <span class="option-indicator"></span>
+          <span class="option-text">Interior Designer</span>
+        </label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="role" id="r-pm" value="Project Manager">
+        <label class="option-label" for="r-pm">
+          <span class="option-indicator"></span>
+          <span class="option-text">Project Manager</span>
+        </label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="role" id="r-owner" value="Studio Owner">
+        <label class="option-label" for="r-owner">
+          <span class="option-indicator"></span>
+          <span class="option-text">Studio Owner</span>
+        </label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="role" id="r-freelance" value="Freelance Designer">
+        <label class="option-label" for="r-freelance">
+          <span class="option-indicator"></span>
+          <span class="option-text">Freelance Designer</span>
+        </label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="role" id="r-other" value="Other" onchange="toggleOther('other-role',this)">
+        <label class="option-label" for="r-other">
+          <span class="option-indicator"></span>
+          <span class="option-text">Other</span>
+        </label>
+      </div>
+    </div>
+    <div class="other-wrap" id="other-role">
+      <input class="form-input" type="text" placeholder="Your role">
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="form-group">
+    <div class="form-label"><span class="form-label-num">3</span>How many people are on your team (including yourself)?</div>
+    <div class="option-grid cols-3">
+      <div class="option-item">
+        <input type="radio" name="team-size" id="ts-1" value="Just me">
+        <label class="option-label" for="ts-1"><span class="option-indicator"></span><span class="option-text">Just me</span></label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="team-size" id="ts-2" value="2-5">
+        <label class="option-label" for="ts-2"><span class="option-indicator"></span><span class="option-text">2-5</span></label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="team-size" id="ts-3" value="6-15">
+        <label class="option-label" for="ts-3"><span class="option-indicator"></span><span class="option-text">6-15</span></label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="team-size" id="ts-4" value="16-50">
+        <label class="option-label" for="ts-4"><span class="option-indicator"></span><span class="option-text">16-50</span></label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="team-size" id="ts-5" value="50+">
+        <label class="option-label" for="ts-5"><span class="option-indicator"></span><span class="option-text">50+</span></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="form-group">
+    <div class="form-label"><span class="form-label-num">4</span>How many projects are you typically running at the same time?</div>
+    <div class="option-grid cols-2">
+      <div class="option-item">
+        <input type="radio" name="volume" id="v-1" value="1-3">
+        <label class="option-label" for="v-1"><span class="option-indicator"></span><span class="option-text">1-3 projects</span></label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="volume" id="v-2" value="4-10">
+        <label class="option-label" for="v-2"><span class="option-indicator"></span><span class="option-text">4-10 projects</span></label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="volume" id="v-3" value="11-25">
+        <label class="option-label" for="v-3"><span class="option-indicator"></span><span class="option-text">11-25 projects</span></label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="volume" id="v-4" value="25+">
+        <label class="option-label" for="v-4"><span class="option-indicator"></span><span class="option-text">25+ projects</span></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="form-group">
+    <div class="form-label"><span class="form-label-num">5</span>Project types you handle <span style="font-weight:300;color:var(--muted)">(select all that apply)</span></div>
+    <div class="option-grid">
+      <div class="option-item">
+        <input type="checkbox" name="project-types" id="pt-res" value="Residential">
+        <label class="option-label" for="pt-res"><span class="option-indicator"></span><span class="option-text">Residential <span class="option-sub">Apartments, Bungalows, Villas</span></span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="project-types" id="pt-com" value="Commercial">
+        <label class="option-label" for="pt-com"><span class="option-indicator"></span><span class="option-text">Commercial <span class="option-sub">Offices, Retail, Restaurants</span></span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="project-types" id="pt-hosp" value="Hospitality">
+        <label class="option-label" for="pt-hosp"><span class="option-indicator"></span><span class="option-text">Hospitality <span class="option-sub">Hotels, Resorts</span></span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="project-types" id="pt-health" value="Healthcare / Institutional">
+        <label class="option-label" for="pt-health"><span class="option-indicator"></span><span class="option-text">Healthcare / Institutional</span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="project-types" id="pt-land" value="Landscape / Outdoor">
+        <label class="option-label" for="pt-land"><span class="option-indicator"></span><span class="option-text">Landscape / Outdoor</span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="project-types" id="pt-reno" value="Renovations & Remodels">
+        <label class="option-label" for="pt-reno"><span class="option-indicator"></span><span class="option-text">Renovations & Remodels</span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="project-types" id="pt-all" value="Mixed / All">
+        <label class="option-label" for="pt-all"><span class="option-indicator"></span><span class="option-text">Mixed / All of the above</span></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="form-group">
+    <label class="form-label" for="city">
+      <span class="form-label-num">6</span>Where are you based?
+    </label>
+    <input class="form-input" type="text" id="city" placeholder="City, State — India">
+  </div>
+
+  <div class="btn-row">
+    <button class="btn-primary" onclick="goToStep(2)">Continue &rarr;</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     STEP 2 — How You Work Today
+════════════════════════════════════════════════════ -->
+<div class="step" id="step-2">
+  <div class="step-tag"><span class="step-tag-dot"></span>How You Work Today</div>
+  <h1 class="step-title">Tell us about your current setup.</h1>
+  <p class="step-sub">So we can configure Archivault to match how you already work - and fix what's not working.</p>
+
+  <!-- Q7 -->
+  <div class="form-group">
+    <div class="form-label"><span class="form-label-num">7</span>How are you currently managing client communication? <span style="font-weight:300;color:var(--muted)">(select all that apply)</span></div>
+    <div class="option-grid">
+      <div class="option-item">
+        <input type="checkbox" name="comms" id="c-wa" value="WhatsApp groups">
+        <label class="option-label" for="c-wa"><span class="option-indicator"></span><span class="option-text">WhatsApp groups</span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="comms" id="c-email" value="Email chains">
+        <label class="option-label" for="c-email"><span class="option-indicator"></span><span class="option-text">Email chains</span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="comms" id="c-drive" value="Google Drive / Dropbox">
+        <label class="option-label" for="c-drive"><span class="option-indicator"></span><span class="option-text">Google Drive / Dropbox links</span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="comms" id="c-excel" value="Excel / Sheets">
+        <label class="option-label" for="c-excel"><span class="option-indicator"></span><span class="option-text">Excel / Sheets for material tracking</span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="comms" id="c-print" value="Physical printed schedules">
+        <label class="option-label" for="c-print"><span class="option-indicator"></span><span class="option-text">Physical printed schedules</span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="comms" id="c-sw" value="Another software" onchange="toggleOther('other-sw',this)">
+        <label class="option-label" for="c-sw"><span class="option-indicator"></span><span class="option-text">Another software</span></label>
+      </div>
+      <div class="other-wrap" id="other-sw">
+        <input class="form-input" type="text" placeholder="Which software?">
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="comms" id="c-none" value="No formal system">
+        <label class="option-label" for="c-none"><span class="option-indicator"></span><span class="option-text">We have no formal system right now</span></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="form-group">
+    <div class="form-label"><span class="form-label-num">8</span>What is your biggest pain point with your current setup? <span style="font-weight:300;color:var(--muted)">(select all that apply)</span></div>
+    <div class="option-grid">
+      <div class="option-item">
+        <input type="checkbox" name="pain" id="p-version" value="Latest version confusion">
+        <label class="option-label" for="p-version"><span class="option-indicator"></span><span class="option-text">Clients asking "which is the latest version?" of drawings</span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="pain" id="p-approvals" value="Lost approvals">
+        <label class="option-label" for="p-approvals"><span class="option-indicator"></span><span class="option-text">Losing approvals in chat threads</span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="pain" id="p-budget" value="No budget visibility">
+        <label class="option-label" for="p-budget"><span class="option-indicator"></span><span class="option-text">No real-time visibility on budget vs spend</span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="pain" id="p-deny" value="Clients denying approvals">
+        <label class="option-label" for="p-deny"><span class="option-indicator"></span><span class="option-text">Clients claiming they never saw or approved something</span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="pain" id="p-chase" value="Chasing clients">
+        <label class="option-label" for="p-chase"><span class="option-indicator"></span><span class="option-text">Chasing clients for feedback</span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="pain" id="p-coord" value="Contractor coordination">
+        <label class="option-label" for="p-coord"><span class="option-indicator"></span><span class="option-text">Coordinating contractors and trades separately</span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="pain" id="p-present" value="Unprofessional presentation">
+        <label class="option-label" for="p-present"><span class="option-indicator"></span><span class="option-text">No professional way to present materials to clients</span></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="form-group">
+    <div class="form-label"><span class="form-label-num">9</span>How do your clients currently approve materials and designs?</div>
+    <div class="option-grid">
+      <div class="option-item">
+        <input type="radio" name="approval-method" id="am-verbal" value="Verbally, in meetings">
+        <label class="option-label" for="am-verbal"><span class="option-indicator"></span><span class="option-text">Verbally, in meetings</span></label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="approval-method" id="am-wa" value="WhatsApp messages">
+        <label class="option-label" for="am-wa"><span class="option-indicator"></span><span class="option-text">WhatsApp messages</span></label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="approval-method" id="am-email" value="Email replies">
+        <label class="option-label" for="am-email"><span class="option-indicator"></span><span class="option-text">Email replies</span></label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="approval-method" id="am-form" value="Formal approval form">
+        <label class="option-label" for="am-form"><span class="option-indicator"></span><span class="option-text">We use a formal approval form</span></label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="approval-method" id="am-none" value="No formal process">
+        <label class="option-label" for="am-none"><span class="option-indicator"></span><span class="option-text">We don't have a formal approval process yet</span></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="form-group">
+    <div class="form-label"><span class="form-label-num">10</span>Do you currently give clients a formal project handover or sign-off document?</div>
+    <div class="option-grid">
+      <div class="option-item">
+        <input type="radio" name="signoff" id="so-phys" value="Yes, physical document">
+        <label class="option-label" for="so-phys"><span class="option-indicator"></span><span class="option-text">Yes - we use a physical document</span></label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="signoff" id="so-dig" value="Yes, digital document">
+        <label class="option-label" for="so-dig"><span class="option-indicator"></span><span class="option-text">Yes - we use a digital document</span></label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="signoff" id="so-inf" value="Informal">
+        <label class="option-label" for="so-inf"><span class="option-indicator"></span><span class="option-text">No, it's informal</span></label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="signoff" id="so-start" value="Want to start">
+        <label class="option-label" for="so-start"><span class="option-indicator"></span><span class="option-text">We'd like to start doing this</span></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn-primary" onclick="goToStep(3)">Continue &rarr;</button>
+    <button class="btn-secondary" onclick="goToStep(1)">&larr; Back</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     STEP 3 — White Labelling
+════════════════════════════════════════════════════ -->
+<div class="step" id="step-3">
+  <div class="step-tag"><span class="step-tag-dot"></span>White Labelling</div>
+  <h1 class="step-title">Make it look like yours.</h1>
+  <p class="step-sub">Archivault can look like your own branded product - your logo, your name, your colours. Clients see your brand, not ours.</p>
+
+  <!-- Q11 -->
+  <div class="form-group">
+    <div class="form-label"><span class="form-label-num">11</span>Would you like Archivault white-labelled for your studio?</div>
+    <div class="option-grid">
+      <div class="option-item">
+        <input type="radio" name="wl" id="wl-yes" value="Yes" onchange="showWLOptions(true)">
+        <label class="option-label" for="wl-yes">
+          <span class="option-indicator"></span>
+          <span class="option-text">Yes - I want clients to see my brand, not "Archivault" <span class="option-sub">Recommended for professional studios</span></span>
+        </label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="wl" id="wl-no" value="No" onchange="showWLOptions(false)">
+        <label class="option-label" for="wl-no">
+          <span class="option-indicator"></span>
+          <span class="option-text">No - default Archivault branding is fine for now</span>
+        </label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="wl" id="wl-maybe" value="Not sure" onchange="showWLOptions(false)">
+        <label class="option-label" for="wl-maybe">
+          <span class="option-indicator"></span>
+          <span class="option-text">Not sure yet - tell me more</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- WL Options (conditional) -->
+  <div id="wl-options" style="display:none">
+    <div class="form-divider"></div>
+    <div class="form-group">
+      <div class="form-label">What would you need? <span style="font-weight:300;color:var(--muted)">(select all that apply)</span></div>
+      <div class="option-grid">
+        <div class="option-item">
+          <input type="checkbox" name="wl-need" id="wn-logo" value="Studio logo on client portal">
+          <label class="option-label" for="wn-logo"><span class="option-indicator"></span><span class="option-text">My studio logo on the client portal</span></label>
+        </div>
+        <div class="option-item">
+          <input type="checkbox" name="wl-need" id="wn-title" value="Studio name in browser tab">
+          <label class="option-label" for="wn-title"><span class="option-indicator"></span><span class="option-text">My studio name in the browser tab (title bar)</span></label>
+        </div>
+        <div class="option-item">
+          <input type="checkbox" name="wl-need" id="wn-colours" value="Custom colours">
+          <label class="option-label" for="wn-colours"><span class="option-indicator"></span><span class="option-text">Custom colours matching my brand palette</span></label>
+        </div>
+        <div class="option-item">
+          <input type="checkbox" name="wl-need" id="wn-url" value="Custom URL">
+          <label class="option-label" for="wn-url">
+            <span class="option-indicator"></span>
+            <span class="option-text">Custom URL / subdomain <span class="option-sub">e.g. portal.mystudio.in</span></span>
+          </label>
+        </div>
+        <div class="option-item">
+          <input type="checkbox" name="wl-need" id="wn-noav" value="Remove Archivault references">
+          <label class="option-label" for="wn-noav"><span class="option-indicator"></span><span class="option-text">Remove all Archivault references in client-facing emails</span></label>
+        </div>
+        <div class="option-item">
+          <input type="checkbox" name="wl-need" id="wn-sender" value="Custom email sender name">
+          <label class="option-label" for="wn-sender">
+            <span class="option-indicator"></span>
+            <span class="option-text">Custom email sender name <span class="option-sub">e.g. "Sharma & Associates" instead of "Archivault"</span></span>
+          </label>
+        </div>
+        <div class="option-item">
+          <input type="checkbox" name="wl-need" id="wn-welcome" value="Custom onboarding message">
+          <label class="option-label" for="wn-welcome"><span class="option-indicator"></span><span class="option-text">Custom onboarding message for clients when they first log in</span></label>
+        </div>
+        <div class="option-item">
+          <input type="checkbox" name="wl-need" id="wn-pdf" value="Branded PDF exports">
+          <label class="option-label" for="wn-pdf">
+            <span class="option-indicator"></span>
+            <span class="option-text">Branded PDF exports <span class="option-sub">Material schedule, sign-off document with your letterhead</span></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="form-label">Do you have a brand style guide we should follow?</div>
+      <div class="option-grid">
+        <div class="option-item">
+          <input type="radio" name="style-guide" id="sg-yes" value="Yes, will share">
+          <label class="option-label" for="sg-yes"><span class="option-indicator"></span><span class="option-text">Yes - I'll share it after onboarding</span></label>
+        </div>
+        <div class="option-item">
+          <input type="radio" name="style-guide" id="sg-no" value="No, keep it simple">
+          <label class="option-label" for="sg-no"><span class="option-indicator"></span><span class="option-text">No - keep it simple and clean</span></label>
+        </div>
+        <div class="option-item">
+          <input type="radio" name="style-guide" id="sg-help" value="Need help designing">
+          <label class="option-label" for="sg-help"><span class="option-indicator"></span><span class="option-text">I'll need help designing it</span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn-primary" onclick="goToStep(4)">Continue &rarr;</button>
+    <button class="btn-secondary" onclick="goToStep(2)">&larr; Back</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     STEP 4 — Feature Walkthrough
+════════════════════════════════════════════════════ -->
+<div class="step" id="step-4">
+  <div class="step-tag"><span class="step-tag-dot"></span>What's Included</div>
+  <h1 class="step-title">Everything you get on day one.</h1>
+  <p class="step-sub">A clear picture of what Archivault gives you out of the box - before we look at what else you might want.</p>
+
+  <div class="fw-intro">
+    <div class="fw-intro-icon">✦</div>
+    <div class="fw-intro-text">
+      <h3>Core features - available today</h3>
+      <p>These are included in every Archivault account at no extra setup. You can start using all of these the moment you log in.</p>
+    </div>
+  </div>
+
+  <div class="fw-section">
+    <div class="fw-section-head">
+      <div class="fw-section-icon">📁</div>
+      <div class="fw-section-title">Project Management</div>
+    </div>
+    <div class="fw-features">
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Create unlimited projects with type, budget, start date, and target date</span></div>
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Set project status - Active, On Hold, Completed, Cancelled</span></div>
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Room-by-room organisation with floor levels and room details</span></div>
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Project-level notes and description</span></div>
+    </div>
+  </div>
+
+  <div class="fw-section">
+    <div class="fw-section-head">
+      <div class="fw-section-icon">🪵</div>
+      <div class="fw-section-title">Material Tracking</div>
+    </div>
+    <div class="fw-features">
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Add materials with name, category, brand, vendor, and estimated cost</span></div>
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Upload reference images per material</span></div>
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span><strong>Real-time budget vs approved spend tracker</strong></span></div>
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Material statuses - Pending, Approved, Revision Requested, Rejected, Superseded</span></div>
+    </div>
+  </div>
+
+  <div class="fw-section">
+    <div class="fw-section-head">
+      <div class="fw-section-icon">📐</div>
+      <div class="fw-section-title">Design & Drawing Management</div>
+    </div>
+    <div class="fw-features">
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Upload floor plans, renders, elevations as images or PDFs (up to 20 MB)</span></div>
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span><strong>Full version history</strong> - v1, v2, v3 automatically tracked; client always sees latest</span></div>
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Folder organisation by phase, discipline, or room</span></div>
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Full-screen lightbox and PDF viewer in the client portal</span></div>
+    </div>
+  </div>
+
+  <div class="fw-section">
+    <div class="fw-section-head">
+      <div class="fw-section-icon">🔗</div>
+      <div class="fw-section-title">Client Portal</div>
+    </div>
+    <div class="fw-features">
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Dedicated read-only portal - clients can't edit anything</span></div>
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Project dashboard with progress ring, budget bar, and action banner</span></div>
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span><strong>Design and material approvals</strong> - approve or request revision with written reason</span></div>
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Room-by-room view of all materials and designs</span></div>
+    </div>
+  </div>
+
+  <div class="fw-section">
+    <div class="fw-section-head">
+      <div class="fw-section-icon">💰</div>
+      <div class="fw-section-title">Budget & BOQ</div>
+    </div>
+    <div class="fw-features">
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Total budget set per project; approved spend auto-calculated</span></div>
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Room-by-room Bill of Quantities</span></div>
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Budget health warnings (amber at 75%, red at 90%)</span></div>
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Export BOQ as CSV and full material schedule as PDF</span></div>
+    </div>
+  </div>
+
+  <div class="fw-section">
+    <div class="fw-section-head">
+      <div class="fw-section-icon">✍️</div>
+      <div class="fw-section-title">Formal Sign-off</div>
+    </div>
+    <div class="fw-features">
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Request formal client sign-off at any project milestone</span></div>
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Client sees full summary of approved materials and designs before signing</span></div>
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Digital acknowledgement with name, timestamp, and architect note</span></div>
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Downloadable sign-off PDF</span></div>
+    </div>
+  </div>
+
+  <div class="fw-section">
+    <div class="fw-section-head">
+      <div class="fw-section-icon">👷</div>
+      <div class="fw-section-title">Trades Portal, Timeline, Mood Board & More</div>
+    </div>
+    <div class="fw-features">
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Trades portal with separate contractor logins and task tracking</span></div>
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Project milestones, site visits, and in-app chat</span></div>
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Mood board for inspiration and visual brief</span></div>
+      <div class="fw-feature"><div class="fw-feature-dot">✓</div><span>Vendors directory, team management, and global search</span></div>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn-primary" onclick="goToStep(5)">Continue &rarr;</button>
+    <button class="btn-secondary" onclick="goToStep(3)">&larr; Back</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     STEP 5 — Customisation Picks
+════════════════════════════════════════════════════ -->
+<div class="step" id="step-5">
+  <div class="step-tag"><span class="step-tag-dot"></span>Customisation Requests</div>
+  <h1 class="step-title">Tell us what else you need.</h1>
+  <p class="step-sub">These go beyond the standard product. Select what's valuable to you and we'll scope it for your studio within 1 business day.</p>
+
+  <!-- Client-facing -->
+  <div class="addon-section">
+    <div class="addon-section-head">Client-facing add-ons</div>
+    <div class="option-grid">
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-sitereport" value="Site Report Generator">
+        <label class="option-label" for="ad-sitereport"><span class="option-indicator"></span><span class="option-text">Site Report Generator <span class="option-sub">Auto-generate a formatted PDF site report from a site visit log</span></span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-moodpdf" value="Material Mood Board PDF">
+        <label class="option-label" for="ad-moodpdf"><span class="option-indicator"></span><span class="option-text">Material Mood Board PDF <span class="option-sub">Export mood board + approved materials as a styled PDF presentation</span></span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-budgetpdf" value="Budget Breakdown PDF">
+        <label class="option-label" for="ad-budgetpdf"><span class="option-indicator"></span><span class="option-text">Client-facing Budget Breakdown PDF <span class="option-sub">Professionally formatted document showing approved spend by room</span></span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-revhistory" value="Revision History Report">
+        <label class="option-label" for="ad-revhistory"><span class="option-indicator"></span><span class="option-text">Revision History Report <span class="option-sub">PDF log of all changes requested and made - useful for dispute documentation</span></span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-welcome" value="Custom Welcome Message">
+        <label class="option-label" for="ad-welcome"><span class="option-indicator"></span><span class="option-text">Custom Welcome Message <span class="option-sub">Personalised message shown when clients first log into their portal</span></span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-weeklyemail" value="Progress Update Emails">
+        <label class="option-label" for="ad-weeklyemail"><span class="option-indicator"></span><span class="option-text">Progress Update Emails <span class="option-sub">Automated weekly email summarising approvals and pending items</span></span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-feedback" value="Client Feedback Forms">
+        <label class="option-label" for="ad-feedback"><span class="option-indicator"></span><span class="option-text">Client Feedback Forms <span class="option-sub">Structured design feedback form instead of free-text revision requests</span></span></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Drawing -->
+  <div class="addon-section">
+    <div class="addon-section-head">Drawing & Design add-ons</div>
+    <div class="option-grid">
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-drawreg" value="Drawing Register">
+        <label class="option-label" for="ad-drawreg"><span class="option-indicator"></span><span class="option-text">Drawing Register <span class="option-sub">Formal register with issue dates, revision numbers, and status</span></span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-markup" value="Markup / Annotation Tool">
+        <label class="option-label" for="ad-markup"><span class="option-indicator"></span><span class="option-text">Markup / Annotation Tool <span class="option-sub">Annotate directly on uploaded images or PDFs</span></span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-floorplan" value="2D Floor Plan Viewer">
+        <label class="option-label" for="ad-floorplan"><span class="option-indicator"></span><span class="option-text">2D Floor Plan Viewer <span class="option-sub">Interactive room-by-room floor plan; click a room to jump to its materials</span></span></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Procurement -->
+  <div class="addon-section">
+    <div class="addon-section-head">Material & Procurement add-ons</div>
+    <div class="option-grid">
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-po" value="Purchase Order Generator">
+        <label class="option-label" for="ad-po"><span class="option-indicator"></span><span class="option-text">Purchase Order Generator <span class="option-sub">Auto-generate a formatted PO from selected materials, grouped by vendor</span></span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-quote" value="Vendor Quotation Tracker">
+        <label class="option-label" for="ad-quote"><span class="option-indicator"></span><span class="option-text">Vendor Quotation Tracker <span class="option-sub">Track multiple vendor quotes per material and compare</span></span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-leadtime" value="Lead Time Tracker">
+        <label class="option-label" for="ad-leadtime"><span class="option-indicator"></span><span class="option-text">Lead Time Tracker <span class="option-sub">Expected and actual delivery dates per material; flag overdue items</span></span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-sample" value="Material Sample Tracker">
+        <label class="option-label" for="ad-sample"><span class="option-indicator"></span><span class="option-text">Material Sample Tracker <span class="option-sub">Log samples sent to the client and track returns or confirmations</span></span></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Financial -->
+  <div class="addon-section">
+    <div class="addon-section-head">Financial add-ons</div>
+    <div class="option-grid cols-2">
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-labour" value="Labour Cost Tracker">
+        <label class="option-label" for="ad-labour"><span class="option-indicator"></span><span class="option-text">Labour Cost Tracker</span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-gst" value="Tax / GST Breakdown">
+        <label class="option-label" for="ad-gst"><span class="option-indicator"></span><span class="option-text">Tax / GST Breakdown</span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-payment" value="Payment Milestone Tracker">
+        <label class="option-label" for="ad-payment"><span class="option-indicator"></span><span class="option-text">Payment Milestone Tracker</span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-invoice" value="Invoice Generator">
+        <label class="option-label" for="ad-invoice"><span class="option-indicator"></span><span class="option-text">Invoice Generator</span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-multicur" value="Multi-currency Support">
+        <label class="option-label" for="ad-multicur"><span class="option-indicator"></span><span class="option-text">Multi-currency Support <span class="option-sub">USD, AED, alongside INR</span></span></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Team -->
+  <div class="addon-section">
+    <div class="addon-section-head">Team & Workflow add-ons</div>
+    <div class="option-grid">
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-taskboard" value="Task Management">
+        <label class="option-label" for="ad-taskboard"><span class="option-indicator"></span><span class="option-text">Task Management <span class="option-sub">Internal task board for the design team, separate from trades tasks</span></span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-privnotes" value="Internal Notes">
+        <label class="option-label" for="ad-privnotes"><span class="option-indicator"></span><span class="option-text">Internal Notes per Material / Design <span class="option-sub">Private team-only notes, not visible to the client</span></span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-workflow" value="Approval Workflow Stages">
+        <label class="option-label" for="ad-workflow"><span class="option-indicator"></span><span class="option-text">Approval Workflow Stages <span class="option-sub">Multi-step internal review before sending to client (Junior - Senior - Client)</span></span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-rbac" value="Role-based Access Control">
+        <label class="option-label" for="ad-rbac"><span class="option-indicator"></span><span class="option-text">Role-based Access Control <span class="option-sub">Granular permissions per team member</span></span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-meeting" value="Meeting Notes Log">
+        <label class="option-label" for="ad-meeting"><span class="option-indicator"></span><span class="option-text">Meeting Notes Log <span class="option-sub">Log meeting notes with date, attendees, and decisions made</span></span></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Integrations -->
+  <div class="addon-section">
+    <div class="addon-section-head">Integrations</div>
+    <div class="option-grid">
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-waintegration" value="WhatsApp Integration">
+        <label class="option-label" for="ad-waintegration"><span class="option-indicator"></span><span class="option-text">WhatsApp Integration <span class="option-sub">Receive a WhatsApp notification when a client approves or requests a revision</span></span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-driveintegration" value="Google Drive / Dropbox Sync">
+        <label class="option-label" for="ad-driveintegration"><span class="option-indicator"></span><span class="option-text">Google Drive / Dropbox Sync <span class="option-sub">Auto-sync uploaded designs to a connected Drive or Dropbox folder</span></span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-autocad" value="AutoCAD / Revit Metadata Import">
+        <label class="option-label" for="ad-autocad"><span class="option-indicator"></span><span class="option-text">AutoCAD / Revit Metadata Import <span class="option-sub">Import drawing metadata from DWG/RVT files</span></span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-tally" value="Tally / QuickBooks Integration">
+        <label class="option-label" for="ad-tally"><span class="option-indicator"></span><span class="option-text">Tally / QuickBooks Integration <span class="option-sub">Sync approved material costs to your accounting software</span></span></label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" name="addon" id="ad-slack" value="Slack / Teams Notifications">
+        <label class="option-label" for="ad-slack"><span class="option-indicator"></span><span class="option-text">Slack / Teams Notifications <span class="option-sub">Post approval activity to a Slack or Teams channel</span></span></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q13 -->
+  <div class="form-group">
+    <div class="form-label"><span class="form-label-num">13</span>Anything else you'd like to see in Archivault?</div>
+    <textarea class="form-input" id="freetext-request" rows="4" placeholder="A workflow you want automated, a document you currently create manually, or a problem you haven't seen solved anywhere..." style="resize:vertical;line-height:1.6"></textarea>
+  </div>
+
+  <!-- Q14 Priority -->
+  <div class="form-group">
+    <div class="form-label"><span class="form-label-num">14</span>What matters most to you right now? <span style="font-weight:300;color:var(--muted)">Drag to rank - most important at the top</span></div>
+    <div class="rank-list" id="rank-list">
+      <div class="rank-item" draggable="true" data-rank="1">
+        <div class="rank-num">1</div>
+        <div class="rank-text">Getting clients to approve materials faster</div>
+        <div class="rank-handle">⠿</div>
+      </div>
+      <div class="rank-item" draggable="true" data-rank="2">
+        <div class="rank-num">2</div>
+        <div class="rank-text">Eliminating "which version is this?" confusion on drawings</div>
+        <div class="rank-handle">⠿</div>
+      </div>
+      <div class="rank-item" draggable="true" data-rank="3">
+        <div class="rank-num">3</div>
+        <div class="rank-text">Having a real-time budget tracker clients can see</div>
+        <div class="rank-handle">⠿</div>
+      </div>
+      <div class="rank-item" draggable="true" data-rank="4">
+        <div class="rank-num">4</div>
+        <div class="rank-text">Creating a more professional client experience</div>
+        <div class="rank-handle">⠿</div>
+      </div>
+      <div class="rank-item" draggable="true" data-rank="5">
+        <div class="rank-num">5</div>
+        <div class="rank-text">Reducing back-and-forth on WhatsApp / email</div>
+        <div class="rank-handle">⠿</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn-primary" onclick="goToStep(6)">Continue &rarr;</button>
+    <button class="btn-secondary" onclick="goToStep(4)">&larr; Back</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     STEP 6 — Go-live Timeline
+════════════════════════════════════════════════════ -->
+<div class="step" id="step-6">
+  <div class="step-tag"><span class="step-tag-dot"></span>Go-live & Onboarding Call</div>
+  <h1 class="step-title">Almost there.</h1>
+  <p class="step-sub">Two quick questions and we're done.</p>
+
+  <!-- Q15 -->
+  <div class="form-group">
+    <div class="form-label"><span class="form-label-num">15</span>When do you want to go live with your first project on Archivault?</div>
+    <div class="option-grid">
+      <div class="option-item">
+        <input type="radio" name="golive" id="gl-week" value="This week">
+        <label class="option-label" for="gl-week"><span class="option-indicator"></span><span class="option-text">This week</span></label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="golive" id="gl-2w" value="Within 2 weeks">
+        <label class="option-label" for="gl-2w"><span class="option-indicator"></span><span class="option-text">Within 2 weeks</span></label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="golive" id="gl-month" value="Within a month">
+        <label class="option-label" for="gl-month"><span class="option-indicator"></span><span class="option-text">Within a month</span></label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="golive" id="gl-explore" value="Just exploring">
+        <label class="option-label" for="gl-explore"><span class="option-indicator"></span><span class="option-text">Just exploring for now</span></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q16 -->
+  <div class="form-group">
+    <div class="form-label"><span class="form-label-num">16</span>Would you like an onboarding call with someone from the Archivault team?</div>
+    <div class="option-grid">
+      <div class="option-item">
+        <input type="radio" name="callpref" id="cp-yes" value="Yes" onchange="showCalendar(true)">
+        <label class="option-label" for="cp-yes">
+          <span class="option-indicator"></span>
+          <span class="option-text">Yes - please book a 30-minute setup call <span class="option-sub">We'll walk through Archivault with your specific setup in mind</span></span>
+        </label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="callpref" id="cp-no" value="No" onchange="showCalendar(false)">
+        <label class="option-label" for="cp-no"><span class="option-indicator"></span><span class="option-text">No - I'll set it up myself</span></label>
+      </div>
+      <div class="option-item">
+        <input type="radio" name="callpref" id="cp-later" value="Maybe later" onchange="showCalendar(false)">
+        <label class="option-label" for="cp-later"><span class="option-indicator"></span><span class="option-text">Maybe later</span></label>
+      </div>
+    </div>
+    <div id="calendar-prompt" style="display:none;margin-top:16px">
+      <div style="background:var(--blue-ll);border:1.5px solid var(--blue-l);border-radius:var(--radius-sm);padding:16px 20px;display:flex;align-items:center;gap:14px">
+        <span style="font-size:22px">📅</span>
+        <div>
+          <div style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:3px">A calendar invite will be sent after you submit.</div>
+          <div style="font-size:12.5px;color:var(--muted);font-weight:300">Or book directly at <a href="https://calendar.app.google/YYfKLqwQS4JDQmht6" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none;font-weight:500">calendar.app.google</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn-primary large" onclick="submitForm()">Submit &amp; complete setup &rarr;</button>
+    <button class="btn-secondary" onclick="goToStep(5)">&larr; Back</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     CONFIRMATION SCREEN
+════════════════════════════════════════════════════ -->
+<div class="step" id="step-confirm">
+  <div class="confirm-wrap">
+    <div class="confirm-icon">✓</div>
+    <h1 class="confirm-title">You're all set.</h1>
+    <p class="confirm-sub">Your studio profile is saved and your customisation requests are with us. Here's what happens next.</p>
+
+    <div class="confirm-steps">
+      <div class="confirm-step">
+        <div class="confirm-step-num">1</div>
+        <div class="confirm-step-body">
+          <h4>Your account is ready</h4>
+          <p>Log in at archivault.in and create your first project. Your studio profile has been saved.</p>
+        </div>
+      </div>
+      <div class="confirm-step">
+        <div class="confirm-step-num">2</div>
+        <div class="confirm-step-body">
+          <h4>We'll review your customisation requests</h4>
+          <p>Our team will look at what you've selected and reach out within 1 business day with scope, timeline, and pricing for any custom additions.</p>
+        </div>
+      </div>
+      <div class="confirm-step">
+        <div class="confirm-step-num">3</div>
+        <div class="confirm-step-body">
+          <h4>White labelling setup</h4>
+          <p>If you opted for white labelling, we'll reach out to collect your logo, colour codes, and domain details and get it live within 3-5 working days.</p>
+        </div>
+      </div>
+      <div class="confirm-step">
+        <div class="confirm-step-num">4</div>
+        <div class="confirm-step-body">
+          <h4>Your onboarding call (if requested)</h4>
+          <p>Check your email - a calendar invite is on its way.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="confirm-actions">
+      <a href="https://archivault.in" class="confirm-action-link">
+        <span class="confirm-action-icon">🚀</span>
+        <span>Create your first project</span>
+      </a>
+      <a href="https://archivault.in" class="confirm-action-link">
+        <span class="confirm-action-icon">👤</span>
+        <span>Invite your first client</span>
+      </a>
+      <a href="/support" class="confirm-action-link">
+        <span class="confirm-action-icon">📖</span>
+        <span>Read the documentation</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+// ── STATE ────────────────────────────────────────────
+let currentStep = 1;
+const totalSteps = 6;
+
+// ── NAVIGATION ───────────────────────────────────────
+function goToStep(n) {
+  document.getElementById('step-' + (currentStep === 0 ? 'confirm' : currentStep)).classList.remove('active');
+  currentStep = n;
+  const target = n === 0 ? 'step-confirm' : 'step-' + n;
+  document.getElementById(target).classList.add('active');
+  updateProgress(n);
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function updateProgress(step) {
+  const pct = step === 0 ? 100 : (step / totalSteps) * 100;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  const label = document.getElementById('topbar-label');
+  if (step === 0) {
+    label.innerHTML = '<strong>Complete</strong>';
+  } else {
+    label.innerHTML = 'Step <strong>' + step + '</strong> of ' + totalSteps;
+  }
+}
+
+function submitForm() {
+  goToStep(0);
+}
+
+// ── CONDITIONAL SHOW/HIDE ────────────────────────────
+function toggleOther(id, input) {
+  const wrap = document.getElementById(id);
+  if (input.type === 'checkbox') {
+    wrap.classList.toggle('visible', input.checked);
+  } else {
+    wrap.classList.toggle('visible', input.checked);
+  }
+}
+
+function showWLOptions(show) {
+  document.getElementById('wl-options').style.display = show ? 'block' : 'none';
+}
+
+function showCalendar(show) {
+  document.getElementById('calendar-prompt').style.display = show ? 'block' : 'none';
+}
+
+// ── DRAG-TO-RANK ─────────────────────────────────────
+(function initDrag() {
+  const list = document.getElementById('rank-list');
+  let dragging = null;
+
+  list.addEventListener('dragstart', e => {
+    dragging = e.target.closest('.rank-item');
+    setTimeout(() => dragging && dragging.classList.add('dragging'), 0);
+  });
+
+  list.addEventListener('dragend', () => {
+    if (dragging) dragging.classList.remove('dragging');
+    list.querySelectorAll('.rank-item').forEach(el => el.classList.remove('drag-over'));
+    dragging = null;
+    updateRankNums();
+  });
+
+  list.addEventListener('dragover', e => {
+    e.preventDefault();
+    const over = e.target.closest('.rank-item');
+    if (!over || over === dragging) return;
+    list.querySelectorAll('.rank-item').forEach(el => el.classList.remove('drag-over'));
+    over.classList.add('drag-over');
+    const rect = over.getBoundingClientRect();
+    const mid = rect.top + rect.height / 2;
+    if (e.clientY < mid) {
+      list.insertBefore(dragging, over);
+    } else {
+      list.insertBefore(dragging, over.nextSibling);
+    }
+  });
+
+  function updateRankNums() {
+    list.querySelectorAll('.rank-item').forEach((el, i) => {
+      el.querySelector('.rank-num').textContent = i + 1;
+    });
+  }
+})();
+</script>
+</body>
+</html>
