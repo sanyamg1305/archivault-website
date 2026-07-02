@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support & FAQ | Archivault</title>
+<meta name="description" content="Answers to every question about Archivault - getting started, projects, materials, approvals, budget, client portal, and more.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://archivault.in/support">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://archivault.in/support">
+<meta property="og:title" content="Support & FAQ | Archivault">
+<meta property="og:description" content="Answers to every question about Archivault.">
+<meta property="og:image" content="https://archivault.in/og-image.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6RZTG7N08D"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-6RZTG7N08D');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0B1220;--ink2:#1E2D45;--muted:#6B7A96;--dim:#D8DEE9;
+  --bg:#FAFAF8;--white:#FFFFFF;
+  --blue:#1B4FD8;--blue-d:#1340B0;--blue-l:#EBF0FC;
+  --serif:'DM Serif Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 48px;height:60px;display:flex;align-items:center;justify-content:space-between;background:rgba(250,250,248,0.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--dim)}
+.nav-logo{font-family:var(--serif);font-size:20px;letter-spacing:0.04em;color:var(--ink);text-decoration:none}
+.nav-logo span{color:var(--blue)}
+.nav-links{display:flex;align-items:center;gap:8px}
+.nav-link{font-size:13px;font-weight:500;color:var(--ink2);text-decoration:none;padding:6px 14px;border-radius:6px;transition:color 0.15s,background 0.15s}
+.nav-link:hover{color:var(--blue);background:var(--blue-l)}
+.nav-link.active{color:var(--blue)}
+.nav-cta{font-size:13px;font-weight:500;padding:8px 20px;background:var(--blue);color:#fff;border:none;border-radius:6px;cursor:pointer;text-decoration:none;transition:background 0.15s}
+.nav-cta:hover{background:var(--blue-d)}
+
+/* HEADER */
+.support-header{max-width:780px;margin:0 auto;padding:120px 24px 0}
+.kicker{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:16px}
+.page-title{font-family:var(--serif);font-size:clamp(34px,5vw,52px);line-height:1.1;margin-bottom:16px}
+.page-sub{font-size:17px;color:var(--muted);font-weight:300;max-width:480px;line-height:1.6;margin-bottom:40px}
+
+/* SEARCH */
+.search-wrap{position:relative;max-width:560px;margin-bottom:48px}
+.search-input{
+  width:100%;padding:14px 48px 14px 18px;
+  font-family:var(--sans);font-size:15px;
+  border:1.5px solid var(--dim);border-radius:10px;
+  background:var(--white);color:var(--ink);
+  outline:none;transition:border-color 0.2s,box-shadow 0.2s;
+}
+.search-input::placeholder{color:var(--muted)}
+.search-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,79,216,0.1)}
+.search-icon{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;font-size:16px}
+.search-count{font-size:13px;color:var(--muted);margin-top:10px;min-height:20px}
+
+/* CATEGORY TABS */
+.cat-tabs{display:flex;flex-wrap:wrap;gap:8px;max-width:780px;margin:0 auto 40px;padding:0 24px}
+.cat-tab{
+  font-size:12px;font-weight:500;padding:6px 14px;border-radius:20px;
+  border:1px solid var(--dim);background:var(--white);color:var(--muted);
+  cursor:pointer;transition:all 0.15s;white-space:nowrap;
+}
+.cat-tab:hover{border-color:#b0bcd4;color:var(--ink)}
+.cat-tab.active{background:var(--blue);border-color:var(--blue);color:#fff}
+
+/* MAIN LAYOUT */
+.support-body{max-width:780px;margin:0 auto;padding:0 24px 100px}
+
+/* CATEGORY SECTION */
+.faq-category{margin-bottom:56px}
+.faq-category[data-hidden]{display:none}
+.cat-heading{
+  font-family:var(--serif);font-size:22px;color:var(--ink);
+  margin-bottom:20px;padding-bottom:14px;
+  border-bottom:1px solid var(--dim);
+}
+.cat-count{font-family:var(--sans);font-size:13px;font-weight:400;color:var(--muted);margin-left:8px}
+
+/* FAQ ITEMS */
+.faq-list{display:flex;flex-direction:column;gap:1px}
+.faq-item{border-bottom:1px solid var(--dim)}
+.faq-item[data-hidden]{display:none}
+.faq-q{
+  width:100%;display:flex;justify-content:space-between;align-items:center;
+  padding:18px 0;background:none;border:none;cursor:pointer;
+  font-family:var(--sans);font-size:15px;font-weight:500;color:var(--ink);
+  text-align:left;gap:16px;transition:color 0.15s;
+}
+.faq-q:hover{color:var(--blue)}
+.faq-q.open{color:var(--blue)}
+.faq-arrow{font-size:16px;color:var(--muted);transition:transform 0.25s,color 0.15s;flex-shrink:0}
+.faq-q.open .faq-arrow{transform:rotate(180deg);color:var(--blue)}
+.faq-a{
+  max-height:0;overflow:hidden;
+  font-size:14.5px;color:var(--muted);line-height:1.75;
+  transition:max-height 0.3s ease,padding-bottom 0.3s ease;
+}
+.faq-a.open{max-height:600px;padding-bottom:20px}
+.faq-a strong{color:var(--ink);font-weight:500}
+.faq-a code{font-family:monospace;font-size:13px;background:var(--blue-l);color:var(--blue);padding:1px 5px;border-radius:3px}
+
+/* NO RESULTS */
+.no-results{text-align:center;padding:80px 0;color:var(--muted)}
+.no-results-title{font-family:var(--serif);font-size:24px;color:var(--ink);margin-bottom:8px}
+.no-results-sub{font-size:15px}
+.no-results[data-hidden]{display:none}
+
+/* CONTACT STRIP */
+.contact-strip{
+  background:var(--ink);border-radius:16px;padding:48px;
+  text-align:center;margin-bottom:60px;
+}
+.contact-strip h2{font-family:var(--serif);font-size:26px;color:#fff;margin-bottom:10px}
+.contact-strip p{color:rgba(255,255,255,0.5);font-size:15px;font-weight:300;margin-bottom:28px}
+.contact-strip-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.strip-btn-primary{padding:13px 28px;background:var(--blue);color:#fff;border-radius:8px;text-decoration:none;font-weight:500;font-size:14px;transition:background 0.15s}
+.strip-btn-primary:hover{background:var(--blue-d)}
+.strip-btn-ghost{padding:12px 28px;background:transparent;color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.2);border-radius:8px;text-decoration:none;font-weight:500;font-size:14px;transition:all 0.15s}
+.strip-btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,0.5)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--dim);padding:28px 48px;display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--muted)}
+.footer-logo{font-family:var(--serif);font-size:15px;color:var(--ink)}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:0 20px}
+  .nav-link{display:none}
+  .nav-cta{padding:8px 14px;font-size:12px}
+  .support-header{padding:100px 20px 0}
+  .cat-tabs{padding:0 20px}
+  .support-body{padding:0 20px 80px}
+  .contact-strip{padding:32px 24px}
+  .contact-strip-btns{flex-direction:column;align-items:center}
+  footer{flex-direction:column;gap:12px;text-align:center;padding:24px 20px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Archi<span>vault</span></a>
+  <div class="nav-links">
+    <a href="/#pain" class="nav-link">How it works</a>
+    <a href="/features" class="nav-link">Features</a>
+    <a href="/blog/" class="nav-link">Blog</a>
+    <a href="/support" class="nav-link" style="color:var(--blue)">Support</a>
+    <a href="/contact" class="nav-link">Contact</a>
+    <a href="https://calendar.app.google/YYfKLqwQS4JDQmht6" class="nav-cta" target="_blank" rel="noopener">Request a demo</a>
+  </div>
+</nav>
+
+<div class="support-header">
+  <p class="kicker">Support</p>
+  <h1 class="page-title">How can we help?</h1>
+  <p class="page-sub">Everything you need to know about Archivault. Can't find what you're looking for? <a href="/contact" style="color:var(--blue)">Reach out directly.</a></p>
+  <div class="search-wrap">
+    <input class="search-input" type="text" id="faq-search" placeholder="Search 144 questions..." autocomplete="off" spellcheck="false">
+    <span class="search-icon">↑↓</span>
+  </div>
+  <p class="search-count" id="search-count"></p>
+</div>
+
+<div class="cat-tabs" id="cat-tabs">
+  <button class="cat-tab active" data-cat="all">All</button>
+  <button class="cat-tab" data-cat="getting-started">Getting Started</button>
+  <button class="cat-tab" data-cat="account">Account & Org</button>
+  <button class="cat-tab" data-cat="team">Team Members</button>
+  <button class="cat-tab" data-cat="clients">Client Accounts</button>
+  <button class="cat-tab" data-cat="projects">Projects</button>
+  <button class="cat-tab" data-cat="rooms">Floors & Rooms</button>
+  <button class="cat-tab" data-cat="materials">Materials</button>
+  <button class="cat-tab" data-cat="designs">Designs</button>
+  <button class="cat-tab" data-cat="budget">Budget & BOQ</button>
+  <button class="cat-tab" data-cat="portal">Client Portal</button>
+  <button class="cat-tab" data-cat="signoff">Sign-off</button>
+  <button class="cat-tab" data-cat="timeline">Timeline & Milestones</button>
+  <button class="cat-tab" data-cat="sitevisits">Site Visits</button>
+  <button class="cat-tab" data-cat="moodboard">Mood Board</button>
+  <button class="cat-tab" data-cat="chat">Chat</button>
+  <button class="cat-tab" data-cat="notifications">Notifications</button>
+  <button class="cat-tab" data-cat="trades">Trades Portal</button>
+  <button class="cat-tab" data-cat="vendors">Vendors</button>
+  <button class="cat-tab" data-cat="files">Files & Storage</button>
+  <button class="cat-tab" data-cat="export">Export & Printing</button>
+  <button class="cat-tab" data-cat="troubleshooting">Troubleshooting</button>
+</div>
+
+<div class="support-body">
+
+  <div class="no-results" id="no-results" data-hidden>
+    <p class="no-results-title">No results found</p>
+    <p class="no-results-sub">Try a different search term or <a href="/contact" style="color:var(--blue)">contact us directly.</a></p>
+  </div>
+
+  <!-- GETTING STARTED -->
+  <div class="faq-category" data-cat="getting-started">
+    <h2 class="cat-heading">Getting Started <span class="cat-count">8 questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item" data-cat="getting-started">
+        <button class="faq-q" onclick="toggleFaq(this)">What is Archivault? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Archivault is a project management platform built specifically for architecture and interior design studios. It replaces scattered WhatsApp threads, email chains, and spreadsheets with a single system for managing rooms, materials, designs, budgets, and client approvals.</div>
+      </div>
+      <div class="faq-item" data-cat="getting-started">
+        <button class="faq-q" onclick="toggleFaq(this)">Who is Archivault for? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">It is for architects, interior designers, and their teams who manage residential or commercial projects and need a structured way to collaborate with clients.</div>
+      </div>
+      <div class="faq-item" data-cat="getting-started">
+        <button class="faq-q" onclick="toggleFaq(this)">Do I need to download anything? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">No. Archivault is fully browser-based. Open it on any device, any browser - no installation required.</div>
+      </div>
+      <div class="faq-item" data-cat="getting-started">
+        <button class="faq-q" onclick="toggleFaq(this)">Is there a free trial? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes. You can get started without a credit card. Sign up and begin using the platform immediately.</div>
+      </div>
+      <div class="faq-item" data-cat="getting-started">
+        <button class="faq-q" onclick="toggleFaq(this)">What happens to my data if I stop using Archivault? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Your data remains in the system. You can export materials via CSV and designs/documents are stored in your account until deleted.</div>
+      </div>
+      <div class="faq-item" data-cat="getting-started">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I use Archivault on my phone? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes. The interface is responsive and works on mobile browsers, though the desktop experience is richer for managing projects with many materials and designs.</div>
+      </div>
+      <div class="faq-item" data-cat="getting-started">
+        <button class="faq-q" onclick="toggleFaq(this)">What browsers are supported? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">All modern browsers - Chrome, Safari, Firefox, Edge. Chrome is recommended for the best experience.</div>
+      </div>
+      <div class="faq-item" data-cat="getting-started">
+        <button class="faq-q" onclick="toggleFaq(this)">Is my data secure? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes. Authentication is handled by Clerk (industry-standard auth provider), file storage by Supabase with private buckets and signed URLs, and all connections are encrypted over HTTPS.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACCOUNT & ORG -->
+  <div class="faq-category" data-cat="account">
+    <h2 class="cat-heading">Account & Organization <span class="cat-count">9 questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item" data-cat="account">
+        <button class="faq-q" onclick="toggleFaq(this)">What is an Organization on Archivault? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Your organization is your studio's account. Every project, client, team member, and vendor lives inside it. You create one organization when you first sign up.</div>
+      </div>
+      <div class="faq-item" data-cat="account">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I be part of multiple organizations? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Currently one organization per login. If you work across multiple studios, you would need separate accounts.</div>
+      </div>
+      <div class="faq-item" data-cat="account">
+        <button class="faq-q" onclick="toggleFaq(this)">How do I change my organization name? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">From your account settings or the Clerk organization management panel accessible via your profile.</div>
+      </div>
+      <div class="faq-item" data-cat="account">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I delete my organization? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Contact support. Organization deletion removes all projects, files, and data permanently.</div>
+      </div>
+      <div class="faq-item" data-cat="account">
+        <button class="faq-q" onclick="toggleFaq(this)">What roles exist in Archivault? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Two roles: <strong>Architect / Team Member</strong> (full access) and <strong>Client</strong> (read-only portal access).</div>
+      </div>
+      <div class="faq-item" data-cat="account">
+        <button class="faq-q" onclick="toggleFaq(this)">Can a client also be a team member? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">No. A user has one role. If a person needs both client visibility and team access, create two separate accounts.</div>
+      </div>
+      <div class="faq-item" data-cat="account">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I change someone's role after they've joined? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes, from the Team management page you can update member roles.</div>
+      </div>
+      <div class="faq-item" data-cat="account">
+        <button class="faq-q" onclick="toggleFaq(this)">How many team members can I invite? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">No hard limit is enforced in the product. Your plan may have seat restrictions - check your subscription.</div>
+      </div>
+      <div class="faq-item" data-cat="account">
+        <button class="faq-q" onclick="toggleFaq(this)">How many clients can I invite? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">No limit. You can invite a client per project or reuse the same client account across multiple projects.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEAM MEMBERS -->
+  <div class="faq-category" data-cat="team">
+    <h2 class="cat-heading">Team Members <span class="cat-count">6 questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item" data-cat="team">
+        <button class="faq-q" onclick="toggleFaq(this)">What can a team member do? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Everything an admin can do - create projects, add rooms, upload designs, add materials, log site visits, manage milestones, invite clients, and request sign-offs.</div>
+      </div>
+      <div class="faq-item" data-cat="team">
+        <button class="faq-q" onclick="toggleFaq(this)">What can a team member NOT do? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">They cannot delete the organization or manage billing. Only the organization owner handles that.</div>
+      </div>
+      <div class="faq-item" data-cat="team">
+        <button class="faq-q" onclick="toggleFaq(this)">How do I invite a team member? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Sidebar → Team → Invite Member → enter their email → set role to Architect / Team Member → Send Invite.</div>
+      </div>
+      <div class="faq-item" data-cat="team">
+        <button class="faq-q" onclick="toggleFaq(this)">The team member didn't receive the invite email. What do I do? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Ask them to check spam/junk folders. You can resend the invite from the Team page.</div>
+      </div>
+      <div class="faq-item" data-cat="team">
+        <button class="faq-q" onclick="toggleFaq(this)">Can a team member see all projects? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes. Team members have visibility across all projects in the organization.</div>
+      </div>
+      <div class="faq-item" data-cat="team">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I remove a team member? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes, from the Team page you can remove members. They immediately lose access.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLIENT ACCOUNTS -->
+  <div class="faq-category" data-cat="clients">
+    <h2 class="cat-heading">Client Accounts <span class="cat-count">9 questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item" data-cat="clients">
+        <button class="faq-q" onclick="toggleFaq(this)">What can a client do on Archivault? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">View their project dashboard, review and approve or request revisions on materials and designs, see the timeline, read site visit logs, view the mood board, use the chat, and formally sign off on the project.</div>
+      </div>
+      <div class="faq-item" data-cat="clients">
+        <button class="faq-q" onclick="toggleFaq(this)">What can a client NOT do? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Clients cannot add, edit, or delete any content. They cannot see other clients' projects. They cannot see financial breakdowns beyond their own budget summary.</div>
+      </div>
+      <div class="faq-item" data-cat="clients">
+        <button class="faq-q" onclick="toggleFaq(this)">Does my client need to download anything? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">No. They log in at the same URL as you and are automatically routed to the Client Portal.</div>
+      </div>
+      <div class="faq-item" data-cat="clients">
+        <button class="faq-q" onclick="toggleFaq(this)">My client says they can't see their project after signing up. <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">You need to assign them to the project. Joining the organization alone doesn't give project access. Go to the project → Overview → Assign Client → select their name.</div>
+      </div>
+      <div class="faq-item" data-cat="clients">
+        <button class="faq-q" onclick="toggleFaq(this)">Can one client be assigned to multiple projects? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes. If they have multiple projects, they see a project selection screen when they log in.</div>
+      </div>
+      <div class="faq-item" data-cat="clients">
+        <button class="faq-q" onclick="toggleFaq(this)">Can multiple clients be assigned to the same project? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Currently one client is assigned per project via the <code>client_id</code> field. If you need multiple stakeholders, invite them all and consider the primary decision-maker as the assigned client.</div>
+      </div>
+      <div class="faq-item" data-cat="clients">
+        <button class="faq-q" onclick="toggleFaq(this)">How does the client log in? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">They use the same Archivault URL. After accepting the invite and creating an account, they are routed to the Client Portal automatically.</div>
+      </div>
+      <div class="faq-item" data-cat="clients">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I preview what my client sees? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">You can navigate directly to <code>/portal/[projectId]/dashboard</code> to see the client view while logged in as an admin.</div>
+      </div>
+      <div class="faq-item" data-cat="clients">
+        <button class="faq-q" onclick="toggleFaq(this)">What language is the client portal in? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">English. Amounts are displayed in Indian Rupees (₹).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="faq-category" data-cat="projects">
+    <h2 class="cat-heading">Projects <span class="cat-count">10 questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item" data-cat="projects">
+        <button class="faq-q" onclick="toggleFaq(this)">How do I create a project? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Dashboard → New Project → fill in the project name, type, budget, and optionally assign a client → Create Project.</div>
+      </div>
+      <div class="faq-item" data-cat="projects">
+        <button class="faq-q" onclick="toggleFaq(this)">Who can create projects? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Only Organization Admins (Architect / Team Member role). Clients cannot create projects.</div>
+      </div>
+      <div class="faq-item" data-cat="projects">
+        <button class="faq-q" onclick="toggleFaq(this)">What project types are available? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Bungalow, Apartment, Villa, Penthouse, Commercial, Office, Restaurant, Retail / Shop, Hotel / Hospitality, Healthcare / Clinic, Industrial / Warehouse, Institutional, Landscape / Outdoor, Renovation / Remodel, Other (custom).</div>
+      </div>
+      <div class="faq-item" data-cat="projects">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I rename a project after creating it? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes, from the project Overview tab or settings.</div>
+      </div>
+      <div class="faq-item" data-cat="projects">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I delete a project? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes, from the project Overview page using the Delete Project option. This permanently deletes all rooms, materials, designs, and files. This cannot be undone.</div>
+      </div>
+      <div class="faq-item" data-cat="projects">
+        <button class="faq-q" onclick="toggleFaq(this)">How many projects can I have? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">No limit enforced in the product.</div>
+      </div>
+      <div class="faq-item" data-cat="projects">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I duplicate a project? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Not currently. You would need to create a new project and add rooms/materials manually.</div>
+      </div>
+      <div class="faq-item" data-cat="projects">
+        <button class="faq-q" onclick="toggleFaq(this)">What is the Client Reference field? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">A display name for the client shown throughout the project - e.g. "Mr. & Mrs. Sharma". It is auto-populated from the assigned client's name but can be customised.</div>
+      </div>
+      <div class="faq-item" data-cat="projects">
+        <button class="faq-q" onclick="toggleFaq(this)">What does the project status mean? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">You can set it to Active, On Hold, Completed, or Cancelled from the Overview tab. It is a visual label for your own tracking - it does not restrict any functionality.</div>
+      </div>
+      <div class="faq-item" data-cat="projects">
+        <button class="faq-q" onclick="toggleFaq(this)">Where do I set the project start and end date? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">In the Overview tab, under Timeline & Phase. You can set a Start Date, Target Date, and the current project Phase.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOORS & ROOMS -->
+  <div class="faq-category" data-cat="rooms">
+    <h2 class="cat-heading">Floors & Rooms <span class="cat-count">8 questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item" data-cat="rooms">
+        <button class="faq-q" onclick="toggleFaq(this)">Do I have to use floors? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">No. Floors are optional. If your project is a single-storey space, you can skip floors and just create rooms directly.</div>
+      </div>
+      <div class="faq-item" data-cat="rooms">
+        <button class="faq-q" onclick="toggleFaq(this)">What is the difference between a floor and a room? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">A floor is a level (Ground Floor, First Floor). A room is a space within a floor (Kitchen, Master Bedroom). Rooms hold all the materials and designs.</div>
+      </div>
+      <div class="faq-item" data-cat="rooms">
+        <button class="faq-q" onclick="toggleFaq(this)">How do I add a room to a specific floor? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">On the Rooms page, each floor section has an "Add Room to this Floor" button. Rooms added this way are associated with that floor.</div>
+      </div>
+      <div class="faq-item" data-cat="rooms">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I move a room from one floor to another? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes, from the room's edit dialog you can reassign it to a different floor.</div>
+      </div>
+      <div class="faq-item" data-cat="rooms">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I rename a room? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes, click the edit (pencil) icon next to any room name.</div>
+      </div>
+      <div class="faq-item" data-cat="rooms">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I delete a room? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes. Deleting a room also deletes all materials and designs associated with it. This cannot be undone.</div>
+      </div>
+      <div class="faq-item" data-cat="rooms">
+        <button class="faq-q" onclick="toggleFaq(this)">What optional information can I record for a room? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Floor area in sq ft, ceiling height in ft, and freeform notes (orientation, existing conditions, special requirements).</div>
+      </div>
+      <div class="faq-item" data-cat="rooms">
+        <button class="faq-q" onclick="toggleFaq(this)">Is there a limit to how many rooms I can create? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">No.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MATERIALS -->
+  <div class="faq-category" data-cat="materials">
+    <h2 class="cat-heading">Materials <span class="cat-count">13 questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item" data-cat="materials">
+        <button class="faq-q" onclick="toggleFaq(this)">What is a material in Archivault? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Any product, finish, fixture, or specification you are including in the project - tiles, paint, lighting, furniture, plumbing fittings, etc. Each material has a name, category, brand, vendor, estimated cost, and status.</div>
+      </div>
+      <div class="faq-item" data-cat="materials">
+        <button class="faq-q" onclick="toggleFaq(this)">What material categories are available? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Flooring, Wall Finishes, Ceiling, Doors & Windows, Lighting, Electrical, Plumbing Fixtures, Kitchen Fittings, Furniture, Soft Furnishings, Hardware & Accessories, Landscaping, Structural, Other.</div>
+      </div>
+      <div class="faq-item" data-cat="materials">
+        <button class="faq-q" onclick="toggleFaq(this)">How does material status work? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Materials start as <strong>Pending</strong> (awaiting client review). The client can <strong>Approve</strong> them (cost is added to approved spend) or request <strong>Revision</strong> (you update and resubmit). You can also manually set status from the admin dashboard.</div>
+      </div>
+      <div class="faq-item" data-cat="materials">
+        <button class="faq-q" onclick="toggleFaq(this)">What happens to the budget when a material is approved? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">The material's estimated cost is added to the <strong>Approved Spend</strong> total, which is tracked against the total project budget in real time.</div>
+      </div>
+      <div class="faq-item" data-cat="materials">
+        <button class="faq-q" onclick="toggleFaq(this)">What is "Revision Requested" status? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">The client has reviewed the material and asked for a change - a different brand, colour, or specification. Their reason is saved and visible to you in the materials table.</div>
+      </div>
+      <div class="faq-item" data-cat="materials">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I approve a material on behalf of the client? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes. In the Materials table, click <strong>Approve</strong> next to any Pending material. Use this only if the client has verbally approved and you are recording it in the system.</div>
+      </div>
+      <div class="faq-item" data-cat="materials">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I upload an image for a material? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes. When adding a material, you can attach a reference image (JPEG, PNG, WebP, GIF, max 10 MB). You can also upload or change it later by clicking the image thumbnail in the materials table.</div>
+      </div>
+      <div class="faq-item" data-cat="materials">
+        <button class="faq-q" onclick="toggleFaq(this)">Is the vendor field for a name or a link? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Both. You can type a vendor's name or paste a full URL. If a URL is detected, it renders as a clickable link in the materials table.</div>
+      </div>
+      <div class="faq-item" data-cat="materials">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I filter materials by status or category? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes. The materials table has a search bar, a category filter dropdown, and a status filter dropdown. You can combine all three.</div>
+      </div>
+      <div class="faq-item" data-cat="materials">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I edit a material after it's been added? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes. Click the three-dot menu (⋯) on any material row → Edit Details.</div>
+      </div>
+      <div class="faq-item" data-cat="materials">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I delete a material? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes. Three-dot menu → Delete Material. Deleted materials are removed from all budget calculations.</div>
+      </div>
+      <div class="faq-item" data-cat="materials">
+        <button class="faq-q" onclick="toggleFaq(this)">What is a "Superseded" status? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">When you upload a new version of a design that had a Pending version, the old version is automatically marked Superseded. This status does not apply to materials.</div>
+      </div>
+      <div class="faq-item" data-cat="materials">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I export all materials? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes. From the Materials page, click <strong>Export PDF</strong> (opens a print-ready material schedule) or from the BOQ page click <strong>Export CSV</strong> for a spreadsheet.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DESIGNS -->
+  <div class="faq-category" data-cat="designs">
+    <h2 class="cat-heading">Designs <span class="cat-count">9 questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item" data-cat="designs">
+        <button class="faq-q" onclick="toggleFaq(this)">What types of design files can I upload? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Images (JPEG, PNG, WebP, GIF) and PDF files. Maximum file size is 20 MB per upload.</div>
+      </div>
+      <div class="faq-item" data-cat="designs">
+        <button class="faq-q" onclick="toggleFaq(this)">What is a design version? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Every time you upload a new file to the same design (e.g. an updated floor plan), it creates a new version. The version number increments automatically (v1, v2, v3...). Clients always see the latest version.</div>
+      </div>
+      <div class="faq-item" data-cat="designs">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I keep old versions? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes. Previous versions are archived and accessible from the design card's History sheet. They are never deleted unless you delete the entire design.</div>
+      </div>
+      <div class="faq-item" data-cat="designs">
+        <button class="faq-q" onclick="toggleFaq(this)">How do I upload a revised design after the client requests changes? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Open the design card → click <strong>Upload New Version</strong> → upload the new file with change notes. The previous Pending version is automatically marked Superseded and the new version goes to the client for re-review.</div>
+      </div>
+      <div class="faq-item" data-cat="designs">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I organise designs into folders? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes. Click <strong>Create Folder</strong> on the Designs page and name it (e.g. "Structural", "Phase 1", "3D Renders"). Designs can be moved into folders by hovering over a design card and clicking the folder icon.</div>
+      </div>
+      <div class="faq-item" data-cat="designs">
+        <button class="faq-q" onclick="toggleFaq(this)">Can the client view PDF designs in the portal? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes. PDFs open in an embedded viewer inside the portal. The client can also download them.</div>
+      </div>
+      <div class="faq-item" data-cat="designs">
+        <button class="faq-q" onclick="toggleFaq(this)">Can the client download images? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">The client can view full-screen and standard browser right-click/save applies. There is no dedicated download button for images.</div>
+      </div>
+      <div class="faq-item" data-cat="designs">
+        <button class="faq-q" onclick="toggleFaq(this)">What does "Pending" mean for a design? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">The design version has been uploaded and is awaiting client review. Once the client approves or requests revision, the status updates.</div>
+      </div>
+      <div class="faq-item" data-cat="designs">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I delete a design? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes, but only Organization Admins can delete designs. Click the trash icon on the design card. All versions and storage files are permanently deleted.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUDGET & BOQ -->
+  <div class="faq-category" data-cat="budget">
+    <h2 class="cat-heading">Budget & BOQ <span class="cat-count">8 questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item" data-cat="budget">
+        <button class="faq-q" onclick="toggleFaq(this)">How is the budget calculated? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">The <strong>Total Budget</strong> you set when creating the project is compared against <strong>Approved Spend</strong> (sum of all materials with Approved status). The difference is the <strong>Remaining Budget</strong>.</div>
+      </div>
+      <div class="faq-item" data-cat="budget">
+        <button class="faq-q" onclick="toggleFaq(this)">Does the budget include pending materials? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">The dashboard shows pending item count separately. Only Approved materials count toward spent budget. Rejected materials are excluded entirely.</div>
+      </div>
+      <div class="faq-item" data-cat="budget">
+        <button class="faq-q" onclick="toggleFaq(this)">What is the BOQ? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Bill of Quantities. An auto-generated room-by-room breakdown of all non-rejected materials with their costs. Found under the BOQ tab inside a project.</div>
+      </div>
+      <div class="faq-item" data-cat="budget">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I export the BOQ? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes - Export CSV gives a spreadsheet, and Print/Export PDF opens a print-ready document.</div>
+      </div>
+      <div class="faq-item" data-cat="budget">
+        <button class="faq-q" onclick="toggleFaq(this)">The BOQ shows all statuses. Can I filter to only approved items? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">The Export page (separate from BOQ) shows all items with their status. For approved-only, use the CSV export and filter in Excel/Sheets.</div>
+      </div>
+      <div class="faq-item" data-cat="budget">
+        <button class="faq-q" onclick="toggleFaq(this)">What happens to budget calculations if I edit a material's cost? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">The approved spend updates immediately to reflect the new cost.</div>
+      </div>
+      <div class="faq-item" data-cat="budget">
+        <button class="faq-q" onclick="toggleFaq(this)">Does the budget track labour costs? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">No. Archivault tracks material costs only. Labour, fees, and taxes are outside the scope of the current budget tracker.</div>
+      </div>
+      <div class="faq-item" data-cat="budget">
+        <button class="faq-q" onclick="toggleFaq(this)">What colour does the budget bar turn when I'm close to the limit? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Amber at 75% used, Red at 90%+ used.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLIENT PORTAL -->
+  <div class="faq-category" data-cat="portal">
+    <h2 class="cat-heading">Client Portal <span class="cat-count">10 questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item" data-cat="portal">
+        <button class="faq-q" onclick="toggleFaq(this)">Where do clients log in? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">The same URL as the main app. Archivault detects their role and routes them to the Client Portal automatically.</div>
+      </div>
+      <div class="faq-item" data-cat="portal">
+        <button class="faq-q" onclick="toggleFaq(this)">What is the Action Center? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">The Action Center is where clients review and act on pending materials and designs. It has two tabs - Design Approvals and Material Approvals.</div>
+      </div>
+      <div class="faq-item" data-cat="portal">
+        <button class="faq-q" onclick="toggleFaq(this)">How does a client approve a material? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">In Action Center → Material Approvals → click <strong>Approve</strong> on the card. The material's cost is immediately added to the project's approved spend.</div>
+      </div>
+      <div class="faq-item" data-cat="portal">
+        <button class="faq-q" onclick="toggleFaq(this)">How does a client request a revision? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Click <strong>Revise</strong> on the material or design card → type their reason in the dialog → Submit. The reason is saved and visible to the architect in the materials/designs table.</div>
+      </div>
+      <div class="faq-item" data-cat="portal">
+        <button class="faq-q" onclick="toggleFaq(this)">Can a client approve something they already revised? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Once the architect resubmits the material or uploads a new design version, it returns to Pending and the client can approve it.</div>
+      </div>
+      <div class="faq-item" data-cat="portal">
+        <button class="faq-q" onclick="toggleFaq(this)">Can the client see the total budget? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes. The client dashboard shows the total budget, approved spend, percentage used, and remaining budget.</div>
+      </div>
+      <div class="faq-item" data-cat="portal">
+        <button class="faq-q" onclick="toggleFaq(this)">Can the client see individual material costs? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes - on the material approval cards and on the sign-off summary.</div>
+      </div>
+      <div class="faq-item" data-cat="portal">
+        <button class="faq-q" onclick="toggleFaq(this)">Can the client edit project notes or room details? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">No. Clients have read-only access to all content.</div>
+      </div>
+      <div class="faq-item" data-cat="portal">
+        <button class="faq-q" onclick="toggleFaq(this)">What does the client dashboard show? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Project progress ring (milestone completion %), budget bar, next action banner, quick navigation links, recent activity log, and recent site visits.</div>
+      </div>
+      <div class="faq-item" data-cat="portal">
+        <button class="faq-q" onclick="toggleFaq(this)">Can the client see all rooms and their materials? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes, via the Rooms section of the portal.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIGN-OFF -->
+  <div class="faq-category" data-cat="signoff">
+    <h2 class="cat-heading">Sign-off <span class="cat-count">8 questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item" data-cat="signoff">
+        <button class="faq-q" onclick="toggleFaq(this)">What is the sign-off feature? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">A formal digital acknowledgement by the client confirming they have reviewed and accepted all approved materials and designs. It records the client's full name and a timestamp.</div>
+      </div>
+      <div class="faq-item" data-cat="signoff">
+        <button class="faq-q" onclick="toggleFaq(this)">When should I request a sign-off? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">At the end of the design phase, or at any agreed project milestone. There must be at least one approved material or design before requesting.</div>
+      </div>
+      <div class="faq-item" data-cat="signoff">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I request sign-off before all materials are approved? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes, but it is not recommended. The sign-off covers all currently approved items at the time of signing.</div>
+      </div>
+      <div class="faq-item" data-cat="signoff">
+        <button class="faq-q" onclick="toggleFaq(this)">What does the client see when a sign-off is requested? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">A full summary of approved materials (with costs) and approved designs, a note from the architect, and a field to type their full name to formally sign.</div>
+      </div>
+      <div class="faq-item" data-cat="signoff">
+        <button class="faq-q" onclick="toggleFaq(this)">Is the sign-off legally binding? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">It is a digital acknowledgement with a name and timestamp. Consult your legal advisor on whether it meets the contractual requirements for your engagement.</div>
+      </div>
+      <div class="faq-item" data-cat="signoff">
+        <button class="faq-q" onclick="toggleFaq(this)">Can a sign-off be undone? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">No. Once signed, the status is permanently Signed. Contact support if you need to reset it.</div>
+      </div>
+      <div class="faq-item" data-cat="signoff">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I download the sign-off as a PDF? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes. After signing, the architect's sign-off page shows a <strong>View / Download PDF</strong> button that opens the full sign-off document.</div>
+      </div>
+      <div class="faq-item" data-cat="signoff">
+        <button class="faq-q" onclick="toggleFaq(this)">What if I request sign-off and then add more materials? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">The newly added materials will not be covered by the existing sign-off. You would need to request a new sign-off after those items are approved to cover them.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE & MILESTONES -->
+  <div class="faq-category" data-cat="timeline">
+    <h2 class="cat-heading">Timeline & Milestones <span class="cat-count">5 questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item" data-cat="timeline">
+        <button class="faq-q" onclick="toggleFaq(this)">What is a milestone? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">A phase or checkpoint in the project - Design, Procurement, Execution, Handover, etc. Milestones have a title, optional description, and optional target date.</div>
+      </div>
+      <div class="faq-item" data-cat="timeline">
+        <button class="faq-q" onclick="toggleFaq(this)">How do I mark a milestone as complete? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">From the Timeline tab, click the checkmark or toggle on any milestone to mark it complete. It records the completion date automatically.</div>
+      </div>
+      <div class="faq-item" data-cat="timeline">
+        <button class="faq-q" onclick="toggleFaq(this)">What happens to the client dashboard when milestones are completed? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">The progress ring on the client dashboard updates in real time to reflect the percentage of completed milestones.</div>
+      </div>
+      <div class="faq-item" data-cat="timeline">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I reorder milestones? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Milestones are ordered by their creation sequence. You can edit the sort order from the timeline view.</div>
+      </div>
+      <div class="faq-item" data-cat="timeline">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I delete a milestone? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes, from the timeline view using the delete icon.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SITE VISITS -->
+  <div class="faq-category" data-cat="sitevisits">
+    <h2 class="cat-heading">Site Visits <span class="cat-count">4 questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item" data-cat="sitevisits">
+        <button class="faq-q" onclick="toggleFaq(this)">What is a site visit log? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">A record of a physical visit to the project site - date, title, observations, and who attended. It creates a permanent audit trail visible to both the team and the client.</div>
+      </div>
+      <div class="faq-item" data-cat="sitevisits">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I add photos to a site visit? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">You can upload progress photos under the <strong>Progress</strong> tab. Site visit logs currently record text and attendees only.</div>
+      </div>
+      <div class="faq-item" data-cat="sitevisits">
+        <button class="faq-q" onclick="toggleFaq(this)">Can the client log a site visit? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">No. Only team members can log site visits.</div>
+      </div>
+      <div class="faq-item" data-cat="sitevisits">
+        <button class="faq-q" onclick="toggleFaq(this)">How many attendees can I add to a site visit? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">No limit. Add names or roles one by one.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOOD BOARD -->
+  <div class="faq-category" data-cat="moodboard">
+    <h2 class="cat-heading">Mood Board <span class="cat-count">3 questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item" data-cat="moodboard">
+        <button class="faq-q" onclick="toggleFaq(this)">What is the mood board? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">A visual inspiration board for the project. You can pin reference images, colour swatches, and inspiration for the client to browse.</div>
+      </div>
+      <div class="faq-item" data-cat="moodboard">
+        <button class="faq-q" onclick="toggleFaq(this)">Who can add items to the mood board? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Only team members. Clients can view it but not add or remove items.</div>
+      </div>
+      <div class="faq-item" data-cat="moodboard">
+        <button class="faq-q" onclick="toggleFaq(this)">What file types can I add to the mood board? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Images - JPEG, PNG, WebP, GIF.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT -->
+  <div class="faq-category" data-cat="chat">
+    <h2 class="cat-heading">Chat <span class="cat-count">4 questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item" data-cat="chat">
+        <button class="faq-q" onclick="toggleFaq(this)">What is the chat feature? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">An in-app messaging thread between the design team and the client, scoped to the project. Replaces the need for WhatsApp or email for project-related communication.</div>
+      </div>
+      <div class="faq-item" data-cat="chat">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I attach files in chat? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes, using the attachment button in the chat panel. Files are stored securely.</div>
+      </div>
+      <div class="faq-item" data-cat="chat">
+        <button class="faq-q" onclick="toggleFaq(this)">Are messages permanent? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes. Chat history is preserved and visible to all project participants for the life of the project.</div>
+      </div>
+      <div class="faq-item" data-cat="chat">
+        <button class="faq-q" onclick="toggleFaq(this)">Is there a notification when someone sends a message? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">In-app notifications appear via the notification bell (top right of the dashboard). External notifications depend on your notification settings.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTIFICATIONS -->
+  <div class="faq-category" data-cat="notifications">
+    <h2 class="cat-heading">Notifications <span class="cat-count">3 questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item" data-cat="notifications">
+        <button class="faq-q" onclick="toggleFaq(this)">What triggers a notification? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Client approvals, revision requests, and other project actions send notifications to the organization team. Notifications appear in the bell icon in the top navigation bar.</div>
+      </div>
+      <div class="faq-item" data-cat="notifications">
+        <button class="faq-q" onclick="toggleFaq(this)">How do I clear notifications? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Click the notification bell → Mark All as Read. Individual notifications can also be marked read by clicking them.</div>
+      </div>
+      <div class="faq-item" data-cat="notifications">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I get email notifications? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Email notifications depend on your Clerk account settings and any email integrations configured. In-app notifications are always active.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRADES PORTAL -->
+  <div class="faq-category" data-cat="trades">
+    <h2 class="cat-heading">Trades Portal <span class="cat-count">4 questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item" data-cat="trades">
+        <button class="faq-q" onclick="toggleFaq(this)">What is the Trades Portal? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">A separate portal for contractors and tradespeople (plumbers, electricians, carpenters, etc.). They log in separately, see only the tasks assigned to them, and update task status.</div>
+      </div>
+      <div class="faq-item" data-cat="trades">
+        <button class="faq-q" onclick="toggleFaq(this)">How is the Trades Portal different from the Client Portal? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">The Client Portal is for homeowners/clients to approve materials and designs. The Trades Portal is for on-site contractors to view and update their assigned tasks.</div>
+      </div>
+      <div class="faq-item" data-cat="trades">
+        <button class="faq-q" onclick="toggleFaq(this)">How do I add a trade? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Sidebar → Trades → Add Trade → enter their name, trade type, and credentials. They receive login credentials to access the Trades Portal.</div>
+      </div>
+      <div class="faq-item" data-cat="trades">
+        <button class="faq-q" onclick="toggleFaq(this)">Can a contractor see material costs or budgets? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">No. They only see the tasks assigned to them.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VENDORS -->
+  <div class="faq-category" data-cat="vendors">
+    <h2 class="cat-heading">Vendors <span class="cat-count">4 questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item" data-cat="vendors">
+        <button class="faq-q" onclick="toggleFaq(this)">What is the Vendors directory? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">A shared address book of suppliers and vendors for your organization. Add them once and reference them across all projects.</div>
+      </div>
+      <div class="faq-item" data-cat="vendors">
+        <button class="faq-q" onclick="toggleFaq(this)">What information can I store for a vendor? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Name, category, contact person, phone, email, website, and notes.</div>
+      </div>
+      <div class="faq-item" data-cat="vendors">
+        <button class="faq-q" onclick="toggleFaq(this)">Can clients see the vendors directory? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">No. It is an internal tool for the design team only.</div>
+      </div>
+      <div class="faq-item" data-cat="vendors">
+        <button class="faq-q" onclick="toggleFaq(this)">Is the vendor directory shared across all projects? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes. It is organization-wide, not project-specific.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILES & STORAGE -->
+  <div class="faq-category" data-cat="files">
+    <h2 class="cat-heading">Files & Storage <span class="cat-count">5 questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item" data-cat="files">
+        <button class="faq-q" onclick="toggleFaq(this)">Where are my files stored? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">All files (design drawings, material images, documents, progress photos) are stored in Supabase private storage buckets. They are not publicly accessible - all access is via signed, time-limited URLs.</div>
+      </div>
+      <div class="faq-item" data-cat="files">
+        <button class="faq-q" onclick="toggleFaq(this)">How long are file URLs valid? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Signed URLs generated for viewing are valid for 24 hours. After that, refreshing the page generates new valid URLs automatically.</div>
+      </div>
+      <div class="faq-item" data-cat="files">
+        <button class="faq-q" onclick="toggleFaq(this)">Is there a file size limit? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Material images: 10 MB max. Design files (images and PDFs): 20 MB max. Documents and progress photos follow similar limits.</div>
+      </div>
+      <div class="faq-item" data-cat="files">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I store CAD files or DWG files? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Not currently. Supported formats are images (JPEG, PNG, WebP, GIF) and PDFs.</div>
+      </div>
+      <div class="faq-item" data-cat="files">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I delete uploaded files? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Yes. Deleting a material removes its image. Deleting a design removes all versions and their files from storage.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPORT & PRINTING -->
+  <div class="faq-category" data-cat="export">
+    <h2 class="cat-heading">Export & Printing <span class="cat-count">4 questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item" data-cat="export">
+        <button class="faq-q" onclick="toggleFaq(this)">What can I export? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Materials as a CSV spreadsheet, the full material schedule as a printable PDF (via the Export tab), and the Bill of Quantities as a print or PDF.</div>
+      </div>
+      <div class="faq-item" data-cat="export">
+        <button class="faq-q" onclick="toggleFaq(this)">How do I export a PDF of all materials? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Inside a project → Materials tab → Export PDF button → opens a print-ready page → use browser print (Ctrl+P / Cmd+P) → Save as PDF.</div>
+      </div>
+      <div class="faq-item" data-cat="export">
+        <button class="faq-q" onclick="toggleFaq(this)">Does the PDF include material images? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">The print export page shows all material data in table format. The full material schedule with images would need to be compiled separately.</div>
+      </div>
+      <div class="faq-item" data-cat="export">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I export designs? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Designs are individual files - download them directly from the design card by opening the full-screen view. Bulk export is not currently available.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TROUBLESHOOTING -->
+  <div class="faq-category" data-cat="troubleshooting">
+    <h2 class="cat-heading">Troubleshooting <span class="cat-count">10 questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item" data-cat="troubleshooting">
+        <button class="faq-q" onclick="toggleFaq(this)">Material images are not showing in the admin dashboard. <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">This was a known bug and has been fixed. If you still see broken images, hard refresh the page (Ctrl+Shift+R / Cmd+Shift+R).</div>
+      </div>
+      <div class="faq-item" data-cat="troubleshooting">
+        <button class="faq-q" onclick="toggleFaq(this)">I assigned a client but they still say they see "No Active Project Found". <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Ensure they are logged into the correct account (the email they used to accept the invite) and that the assignment was saved. Go to project → Overview → Assign Client to verify.</div>
+      </div>
+      <div class="faq-item" data-cat="troubleshooting">
+        <button class="faq-q" onclick="toggleFaq(this)">The client approved a material but the budget didn't update. <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Refresh the page. Budget calculations update server-side after approval - a hard refresh (Ctrl+Shift+R) will pull the latest figures.</div>
+      </div>
+      <div class="faq-item" data-cat="troubleshooting">
+        <button class="faq-q" onclick="toggleFaq(this)">I can't see the "New Project" button on the Dashboard. <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Only Organization Admins can create projects. If you're a team member with a different role, contact your organization owner.</div>
+      </div>
+      <div class="faq-item" data-cat="troubleshooting">
+        <button class="faq-q" onclick="toggleFaq(this)">The sign-off PDF link is not working for the client. <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Clients should not be directed to <code>/projects/...</code> URLs - those are admin routes. The client accesses the sign-off from their portal under the Sign-off tab.</div>
+      </div>
+      <div class="faq-item" data-cat="troubleshooting">
+        <button class="faq-q" onclick="toggleFaq(this)">A design card is not showing on the Designs page. <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">This can happen if the design has no uploaded versions. Designs with zero versions are hidden from the grid. Upload a file to make it appear.</div>
+      </div>
+      <div class="faq-item" data-cat="troubleshooting">
+        <button class="faq-q" onclick="toggleFaq(this)">The BOQ vendor column shows dashes for all materials. <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">The Vendor column in the BOQ reads the vendor text field directly. If you left the vendor field blank when adding materials, it shows "-". Edit the material and add a vendor name.</div>
+      </div>
+      <div class="faq-item" data-cat="troubleshooting">
+        <button class="faq-q" onclick="toggleFaq(this)">I invited a client but they are not appearing in the "Assign Client" dropdown. <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">They need to have accepted the invite and completed sign-up first. Once they have an active account, they will appear in the dropdown.</div>
+      </div>
+      <div class="faq-item" data-cat="troubleshooting">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I use Archivault offline? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">No. Archivault requires an internet connection for all features.</div>
+      </div>
+      <div class="faq-item" data-cat="troubleshooting">
+        <button class="faq-q" onclick="toggleFaq(this)">I'm getting a permission error when trying to approve a material. <span class="faq-arrow">↓</span></button>
+        <div class="faq-a">Ensure you are logged in as a team member or admin, not as a client. Clients can approve via the portal only.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT STRIP -->
+  <div class="contact-strip">
+    <h2>Still have a question?</h2>
+    <p>Our team replies within 24 hours. No bots, no ticket queues.</p>
+    <div class="contact-strip-btns">
+      <a href="mailto:hello@archivault.in" class="strip-btn-primary">Email us</a>
+      <a href="https://calendar.app.google/YYfKLqwQS4JDQmht6" class="strip-btn-ghost" target="_blank" rel="noopener">Book a demo</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span class="footer-logo">Archivault</span>
+  <span>Built for architecture &amp; interior design firms in India</span>
+</footer>
+
+<script>
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const answer = item.querySelector('.faq-a');
+  const isOpen = btn.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  answer.classList.toggle('open', !isOpen);
+}
+
+const allItems = Array.from(document.querySelectorAll('.faq-item'));
+const allCategories = Array.from(document.querySelectorAll('.faq-category'));
+const searchInput = document.getElementById('faq-search');
+const searchCount = document.getElementById('search-count');
+const noResults = document.getElementById('no-results');
+const catTabsEl = document.getElementById('cat-tabs');
+let activeCategory = 'all';
+
+function normalize(str) {
+  return str.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+function applyFilters() {
+  const query = normalize(searchInput.value);
+  let visibleCount = 0;
+
+  allItems.forEach(item => {
+    const qText = normalize(item.querySelector('.faq-q').textContent);
+    const aText = normalize(item.querySelector('.faq-a').textContent);
+    const itemCat = item.dataset.cat;
+    const matchesSearch = !query || qText.includes(query) || aText.includes(query);
+    const matchesCat = activeCategory === 'all' || itemCat === activeCategory;
+    const visible = matchesSearch && matchesCat;
+    item.toggleAttribute('data-hidden', !visible);
+    if (visible) visibleCount++;
+  });
+
+  allCategories.forEach(sec => {
+    const secCat = sec.dataset.cat;
+    const catMatchesTab = activeCategory === 'all' || secCat === activeCategory;
+    const hasVisible = Array.from(sec.querySelectorAll('.faq-item')).some(i => !i.hasAttribute('data-hidden'));
+    sec.toggleAttribute('data-hidden', !catMatchesTab || !hasVisible);
+  });
+
+  noResults.toggleAttribute('data-hidden', visibleCount > 0);
+  if (query) {
+    searchCount.textContent = visibleCount === 0 ? 'No results' : visibleCount + ' result' + (visibleCount === 1 ? '' : 's');
+  } else {
+    searchCount.textContent = '';
+  }
+}
+
+searchInput.addEventListener('input', applyFilters);
+
+catTabsEl.addEventListener('click', e => {
+  const tab = e.target.closest('.cat-tab');
+  if (!tab) return;
+  activeCategory = tab.dataset.cat;
+  document.querySelectorAll('.cat-tab').forEach(t => t.classList.toggle('active', t === tab));
+  applyFilters();
+});
+</script>
+</body>
+</html>
